@@ -10,6 +10,7 @@ import {
 import { useRef, useState, useEffect } from "react";
 import logoImage from "@/assets/vidhi-logo.png";
 import doodleImage from "@/assets/vidhi-doodle.png";
+import formalImage from "@/assets/formal pic.jpg";
 
 const skillIconModules = import.meta.glob("../assets/icons/*.png", {
   eager: true,
@@ -17,8 +18,7 @@ const skillIconModules = import.meta.glob("../assets/icons/*.png", {
   import: "default",
 }) as Record<string, string>;
 
-const skillIcon = (fileName: string) =>
-  skillIconModules[`../assets/icons/${fileName}`];
+const skillIcon = (fileName: string) => skillIconModules[`../assets/icons/${fileName}`];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -186,6 +186,75 @@ const Sun = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
+const CheckMark = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M20 6L9 17l-5-5" />
+  </svg>
+);
+
+const PaperClip = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
+  </svg>
+);
+
+const CircleDoodle = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 100 100"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+  >
+    <path d="M50 10 C 20 12, 10 40, 15 65 C 20 90, 60 95, 80 80 C 95 65, 90 20, 52 12 C 45 10, 38 12, 35 15" />
+  </svg>
+);
+
+const HighlightStroke = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 100 10"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3"
+    strokeLinecap="round"
+  >
+    <path d="M5 5 C 30 2, 60 8, 95 4" />
+  </svg>
+);
+
+const ArrowConnector = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 100 40"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 35 Q 25 15, 50 20 T 92 10" />
+    <path d="M82 18 L 94 10 L 86 2" />
+  </svg>
+);
+
 /* ====================== HELPERS ====================== */
 function Reveal({
   children,
@@ -329,7 +398,6 @@ function Portfolio() {
       <Marquee />
       <Education />
       <WorkJourney />
-      <SelectedWork />
       <ResearchLab />
       <Impact />
       <Playground />
@@ -407,7 +475,6 @@ function Nav({ dark, toggleTheme }: { dark: boolean; toggleTheme: () => void }) 
           {[
             ["Education", "#education"],
             ["Experience", "#experience"],
-            ["Work", "#work"],
             ["Projects", "#projects"],
             ["Skills", "#skills"],
             ["Message", "#contact"],
@@ -511,9 +578,9 @@ function Hero() {
 
           <Reveal delay={0.3}>
             <p className="mt-10 max-w-xl text-lg leading-relaxed text-ink/80">
-              Engineer, researcher, and product thinker building software that turns complex problems into systems people can actually use. I like turning messy
-              ideas into clear systems that are easy to use, easy to explain, and useful in real
-              work.
+              Engineer, researcher, and product thinker building software that turns complex
+              problems into systems people can actually use. I like turning messy ideas into clear
+              systems that are easy to use, easy to explain, and useful in real work.
             </p>
           </Reveal>
 
@@ -557,18 +624,21 @@ function Hero() {
         {/* right collage */}
         <div className="lg:col-span-5 relative h-[560px]">
           <Tilt3D max={18} className="absolute top-0 right-0 w-72">
-            <motion.div style={{ y: y1 }} className="polaroid rotate-[5deg]">
+            <motion.div 
+              style={{ y: y1 }} 
+              className="polaroid rotate-[5deg]"
+            >
               <div className="aspect-[4/5] relative overflow-hidden bg-paper">
                 <img
                   src={doodleImage}
                   alt="Hand-drawn portrait of Vidhi"
-                  className="h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover"
                   loading="eager"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-paper/8 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-paper/8 via-transparent to-transparent pointer-events-none" />
               </div>
-              <div className="mt-3 font-hand text-xl text-ink/80 text-center">
+              <div className="mt-3 font-hand text-xl text-ink/80 text-center min-h-[28px] select-none">
                 - the doodle version
               </div>
             </motion.div>
@@ -598,6 +668,11 @@ function Hero() {
             transition={{ delay: 1, type: "spring", stiffness: 120 }}
             className="absolute bottom-28 right-2 w-28 h-28"
           >
+            {/* Hand-drawn sketch circle around wax seal */}
+            <div className="absolute -inset-3 text-gold/70 select-none pointer-events-none">
+              <CircleDoodle className="w-full h-full" />
+            </div>
+
             <motion.svg
               viewBox="0 0 100 100"
               className="absolute inset-0 w-full h-full text-burgundy"
@@ -623,6 +698,11 @@ function Hero() {
           <Sparkle className="absolute top-12 left-12 w-4 h-4 text-gold animate-pulse" />
           <Star className="absolute top-1/2 right-2 w-4 h-4 text-burgundy/60" />
           <Arrow className="absolute top-32 -left-8 w-20 text-rose/50 -rotate-12 hidden lg:block" />
+
+          <div className="absolute top-1/3 -right-24 font-hand text-lg text-burgundy/60 rotate-[-12deg] hidden xl:block z-10">
+            - student & developer
+          </div>
+
           <motion.div
             animate={{ rotate: [0, 15, -15, 0] }}
             transition={{ duration: 6, repeat: Infinity }}
@@ -631,6 +711,12 @@ function Hero() {
             <Pen className="w-8 h-8" />
           </motion.div>
         </div>
+      </div>
+
+      {/* Margin note under Hero content */}
+      <div className="absolute bottom-6 left-12 font-hand text-lg text-rose/60 rotate-[2deg] hidden lg:flex items-center gap-1 z-10 select-none">
+        <CheckMark className="w-4 h-4 text-gold" />
+        always building & shipping 🚀
       </div>
     </section>
   );
@@ -741,6 +827,7 @@ function Education() {
       note: "Scored 92.6%. Where I first fell in love with making things.",
       icon: "🏫",
       tilt: "-2deg",
+      doodle: "first lines of code!",
     },
     {
       year: "2021",
@@ -749,6 +836,7 @@ function Education() {
       note: "Scored 95.8%. Boarding school taught me focus, notebooks, and curiosity.",
       icon: "📚",
       tilt: "1.5deg",
+      doodle: "boarding school focus",
     },
     {
       year: "2022 → Present",
@@ -757,6 +845,7 @@ function Education() {
       note: "CGPA 9.04 - where engineering met business and research.",
       icon: "🎓",
       tilt: "-1deg",
+      doodle: "9.04 CGPA 🚀",
     },
     {
       year: "Jan → Apr 2026",
@@ -766,6 +855,7 @@ function Education() {
       icon: "📐",
       tilt: "2deg",
       featured: true,
+      doodle: "cohort PM study",
     },
   ];
 
@@ -792,9 +882,10 @@ function Education() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: "spring", stiffness: 200, damping: 14 }}
-                  className={`relative ivory-texture border ${s.featured ? "border-burgundy" : "border-border"} rounded-sm p-7 shadow-[0_15px_45px_-18px_rgba(66,25,36,0.35)]`}
+                  className={`relative ivory-texture border ${s.featured ? "border-burgundy" : "border-border"} rounded-sm p-7 shadow-[0_15px_45px_-18px_rgba(66,25,36,0.35)] group`}
                   style={{ transform: `rotate(${s.tilt})` }}
                 >
+                  <PaperClip className="absolute top-4 right-14 w-7 h-7 text-rose/30 -rotate-12 pointer-events-none group-hover:rotate-0 transition-transform" />
                   <div className="tape w-20 h-5 -top-2 left-6 rotate-[-6deg]" />
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -807,6 +898,13 @@ function Education() {
                     </div>
                   </div>
                   <p className="mt-4 text-ink/75 font-serif">{s.note}</p>
+
+                  {s.doodle && (
+                    <div className="mt-4 font-hand text-lg text-rose/70 italic text-right group-hover:text-burgundy transition-colors">
+                      ~ {s.doodle}
+                    </div>
+                  )}
+
                   {s.featured && (
                     <div className="absolute -top-3 -right-3 stamp bg-paper text-burgundy text-[10px]">
                       new · 2026
@@ -834,6 +932,7 @@ function WorkJourney() {
       note: "Designing an enterprise workforce platform with real-time activity, browser and application analytics, configurable 5-second to 24-hour capture, live screen monitoring, automated reports, device validation, and RBAC across 4+ roles.",
       metric: "7+ enterprise devices tested",
       tilt: "-1deg",
+      doodle: "activity tracker built from scratch",
     },
     {
       year: "May - Jul 2025",
@@ -842,6 +941,7 @@ function WorkJourney() {
       note: "Built an ML-powered anomaly dashboard for Account Onboarding, parsing 50,000+ daily logs and surfacing trends through 15+ Dash components. Also developed an AI chatbot for recurring internal queries.",
       metric: "30% faster anomaly detection",
       tilt: "1deg",
+      doodle: "parsing 50k+ logs/day ⚡",
     },
     {
       year: "Jun - Aug 2024",
@@ -850,6 +950,7 @@ function WorkJourney() {
       note: "Compared 20+ sustainability products, translated GRI, TCFD, IR and NVG frameworks into a unified benchmark for 5 power companies, and built Power BI reports used for product positioning.",
       metric: "50% more efficient reporting",
       tilt: "-1.5deg",
+      doodle: "benchmarked ESG metrics",
     },
     {
       year: "Jun 2024",
@@ -858,6 +959,7 @@ function WorkJourney() {
       note: "Worked on stock-market forecasting studies using 20 years of data. Evaluated LSTM, GRU and TCN models with MSE, RMSE and MAE, then deployed real-time forecasts with yfinance and Streamlit.",
       metric: "20+ years of data",
       tilt: "1.5deg",
+      doodle: "sequence-model comparison studies",
     },
     {
       year: "Feb - Mar 2024",
@@ -866,6 +968,7 @@ function WorkJourney() {
       note: "Coordinated candidate communication, onboarding, databases and official support groups while reporting recruitment progress and resolving candidate queries.",
       metric: "Candidate operations end to end",
       tilt: "-1deg",
+      doodle: "onboarding operations",
     },
   ];
 
@@ -913,14 +1016,23 @@ function WorkJourney() {
                     <motion.div
                       whileHover={{ y: -6, scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 200, damping: 14 }}
-                      className="relative bg-paper border border-border rounded-sm p-7 shadow-[0_18px_50px_-18px_rgba(66,25,36,0.35)]"
+                      className="relative bg-paper border border-border rounded-sm p-7 shadow-[0_18px_50px_-18px_rgba(66,25,36,0.35)] group"
                       style={{ transform: `rotate(${s.tilt})` }}
                     >
+                      <PaperClip className="absolute top-4 right-14 w-7 h-7 text-rose/30 -rotate-12 pointer-events-none group-hover:rotate-0 transition-transform" />
                       <div className="tape w-20 h-5 -top-2 left-6 rotate-[-6deg]" />
                       <h3 className="font-serif text-2xl">{s.title}</h3>
                       <p className="mt-1 text-rose italic">{s.place}</p>
                       <p className="mt-3 text-ink/75 leading-relaxed">{s.note}</p>
-                      <div className="mt-5 inline-flex rounded-full border border-gold/50 bg-gold/10 px-3 py-1 font-serif text-sm text-burgundy">
+
+                      {s.doodle && (
+                        <div className="mt-4 font-hand text-lg text-rose/70 italic group-hover:text-burgundy transition-colors">
+                          ~ {s.doodle}
+                        </div>
+                      )}
+
+                      <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-3 py-1 font-serif text-sm text-burgundy">
+                        <CheckMark className="w-3.5 h-3.5" />
                         {s.metric}
                       </div>
                     </motion.div>
@@ -969,7 +1081,11 @@ function SelectedWork() {
       thinking: "Leaders need one clear format, not more noise.",
       approach:
         "Studied 20+ companies, created one ESG format for 5 power companies, and built clean Power BI dashboards.",
-      impact: ["20+ firms studied", "5 power companies analyzed", "4 reporting frameworks compared"],
+      impact: [
+        "20+ firms studied",
+        "5 power companies analyzed",
+        "4 reporting frameworks compared",
+      ],
       stack: "Power BI · Research · ESG",
       live: null,
       code: null,
@@ -1079,20 +1195,93 @@ function SelectedWork() {
 
 /* ====================== RESEARCH LAB ====================== */
 function ResearchLab() {
-  const notes = [
+  const [archiveOpen, setArchiveOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState("All");
+
+  const featuredProjects = [
     {
-      tag: "Shipped",
+      title: "Workforce Monitoring Platform",
+      tag: "Enterprise System",
+      stack: "Auth · RBAC · MSI Installer · Live capture",
+      lines: [
+        "Tracks employee activity, browser usage, and application metrics without compromising trust.",
+        "Supports dynamic screenshot intervals from 5 seconds to 24 hours, live screen monitoring, and automated reporting.",
+        "Engineered with strict Role-Based Access Control across 4+ enterprise user groups.",
+      ],
+      code: null,
+      live: null,
+      doodle: "activity tracker",
+    },
+    {
+      title: "Agentic AI Researcher",
+      tag: "AI & Agents",
+      stack: "Python · Gemini · arXiv · Streamlit",
+      lines: [
+        "Autonomous agent that plans research tasks, searches arXiv database, and downloads/parses PDFs.",
+        "Synthesizes structured literature reviews and outputs fully compiled LaTeX drafts.",
+        "Integrates human-in-the-loop validation checkpoints before compilation.",
+      ],
+      code: "https://github.com/Vidhi-bhutia/Agentic-AI-Researcher",
+      live: null,
+      doodle: "autonomous draft",
+    },
+    {
+      title: "Health Analysis using Federated Learning",
+      tag: "Research Project",
+      stack: "Flask · XGBoost · FedAvg · Gemini",
+      lines: [
+        "Predicts health risks using machine learning models trained across multiple simulated hospital databases.",
+        "Aggregates local model parameters securely using the federated learning algorithm (FedAvg).",
+        "Includes personalized appointment booking and AI-generated wellness advice dashboards.",
+      ],
+      code: "https://github.com/Vidhi-bhutia/Health-Analysis-using-Federated-Learning-and-Cloud",
+      live: null,
+      doodle: "federated ML nodes",
+    },
+    {
+      title: "Remedy Relay",
+      tag: "Health & RAG",
+      stack: "Flask · Gemini · Pinecone · RAG",
+      lines: [
+        "Medical knowledge assistant utilizing Retrieval-Augmented Generation for document QA.",
+        "Indexes dense vector embeddings of scanned medical textbooks and papers into Pinecone.",
+        "Returns context-linked answers ensuring medical advice is grounded in literature.",
+      ],
+      code: "https://github.com/Vidhi-bhutia/Remedy-Relay",
+      live: null,
+      doodle: "vector index",
+    },
+    {
+      title: "N8N Job Search Automation",
+      tag: "Automation System",
+      stack: "n8n · Sheets · Telegram · APIs",
+      lines: [
+        "Runs automated query workflows searching LinkedIn listings on a configured 6-hour cron schedule.",
+        "Integrates Google Drive to parse resumes, deduplicate listings, and rate-limit requests.",
+        "Pushes daily matched roles direct to Telegram alert channels with compatibility summaries.",
+      ],
+      code: "https://github.com/Vidhi-bhutia/N8N-Job-Search-Automation",
+      live: null,
+      doodle: "pipeline workflow",
+    },
+    {
       title: "README Live Preview",
+      tag: "VS Code Tool",
       stack: "VS Code Extension · Free",
       lines: [
-        "Previews Markdown beside the editor with GitHub styling and automatic refresh on save.",
-        "Supports tables, task lists, images, dark mode, and syntax highlighting for 200+ languages.",
+        "Live Markdown compiler side-panel matching GitHub's official CSS theme.",
+        "Supports dynamic rendering of tables, checklists, local images, and syntax highlighting.",
+        "Downloaded by 113+ developers worldwide with live auto-refresh on save.",
       ],
-      rotate: "-1.2deg",
       code: "https://github.com/Vidhi-bhutia/Github-Readme-Viewer",
       install:
         "https://marketplace.visualstudio.com/items?itemName=VidhiBhutia.readme-live-preview&ssr=false#overview",
+      doodle: "113+ installs!",
     },
+  ];
+
+  const archiveProjects = [
     {
       tag: "Dev Tool",
       title: "Code Change Impact Analyzer",
@@ -1101,9 +1290,7 @@ function ResearchLab() {
         "Parses Python imports, function definitions, and calls to build dependency graphs.",
         "Predicts which modules and tests may be affected when a file changes.",
       ],
-      rotate: "1.2deg",
       code: "https://github.com/Vidhi-bhutia/Project-Dependency-Detector",
-      install: "https://pypi.org/project/code-change-impact-analyzer/",
     },
     {
       tag: "Reliability",
@@ -1113,42 +1300,17 @@ function ResearchLab() {
         "Runs TCP, HTTP, and disk-space checks for production readiness and deployments.",
         "Provides library and CLI output with automation-friendly exit codes and no dependencies.",
       ],
-      rotate: "-0.8deg",
       code: "https://github.com/Vidhi-bhutia/Service-Health-Checker",
-      install: "https://pypi.org/project/service-health-checker/",
     },
     {
-      tag: "Research",
-      title: "Health Analysis using Federated Learning",
-      stack: "Flask · XGBoost · FedAvg · Gemini",
+      tag: "Product",
+      title: "Skillyn",
+      stack: "Streamlit · Gemini · PyPDF2",
       lines: [
-        "Predicts four health risks using models trained across three simulated hospitals.",
-        "Aggregates XGBoost linear weights with FedAvg and adds health tips and appointments.",
+        "Analyzes a PDF resume against a pasted job description for ATS alignment.",
+        "Returns a match percentage, missing keywords, profile summary, and actionable feedback.",
       ],
-      rotate: "1.4deg",
-      code: "https://github.com/Vidhi-bhutia/Health-Analysis-using-Federated-Learning-and-Cloud",
-    },
-    {
-      tag: "Automation",
-      title: "N8N Job Search Automation",
-      stack: "n8n · APIs · Sheets · Telegram",
-      lines: [
-        "Runs configurable LinkedIn searches every six hours from preferences stored in Sheets.",
-        "Parses a Drive-hosted resume, deduplicates results, rate-limits requests, and alerts via Telegram.",
-      ],
-      rotate: "-1.5deg",
-      code: "https://github.com/Vidhi-bhutia/N8N-Job-Search-Automation",
-    },
-    {
-      tag: "Agents",
-      title: "Agentic AI Researcher",
-      stack: "Python · Gemini · arXiv · Streamlit",
-      lines: [
-        "Plans a research task, discovers arXiv papers, extracts PDFs, and synthesizes structured sections.",
-        "Generates LaTeX and a compiled PDF as a draft that explicitly requires human validation.",
-      ],
-      rotate: "1deg",
-      code: "https://github.com/Vidhi-bhutia/Agentic-AI-Researcher",
+      code: "https://github.com/Vidhi-bhutia/Skillyn",
     },
     {
       tag: "ML",
@@ -1158,7 +1320,6 @@ function ResearchLab() {
         "Scrapes live LinkedIn and Workday listings with custom filtering instead of a paid data API.",
         "Compares a PDF resume with each role and explains fit scores and improvement advice.",
       ],
-      rotate: "-1deg",
       code: "https://github.com/Vidhi-bhutia/Job-Recommendation-System",
     },
     {
@@ -1169,7 +1330,6 @@ function ResearchLab() {
         "Compares traditional routing with a decentralized winner-takes-all simulation.",
         "Reinforces faster services over time and visualizes latency, throughput, and reliability.",
       ],
-      rotate: "0.7deg",
       code: "https://github.com/Vidhi-bhutia/Neuromorphic-Routing-Simulator",
     },
     {
@@ -1180,41 +1340,17 @@ function ResearchLab() {
         "Analyzes an uploaded codebase ZIP and drafts architecture and module documentation.",
         "Generates multiple UML diagram types and exports the finished notebook as a PDF.",
       ],
-      rotate: "-0.9deg",
       code: "https://github.com/Vidhi-bhutia/Documentation-AI",
     },
     {
       tag: "Crypto",
       title: "Stateful Hash Based Signature Scheme",
-      stack: "Python · Streamlit · SQLite · Cryptography",
+      stack: "Python · Streamlit · Cryptography",
       lines: [
         "Research prototype for hashing, signing, verifying, and storing long-lived document metadata.",
         "Attempts XMSS, LMS, or SPHINCS integrations and clearly labels its Ed25519 demo fallback as non-quantum-safe.",
       ],
-      rotate: "1.6deg",
       code: "https://github.com/Vidhi-bhutia/Stateful-Hash-Based-Signature-Scheme",
-    },
-    {
-      tag: "Product",
-      title: "Skillyn",
-      stack: "Streamlit · Gemini · PyPDF2",
-      lines: [
-        "Analyzes a PDF resume against a pasted job description for ATS alignment.",
-        "Returns a match percentage, missing keywords, profile summary, and actionable feedback.",
-      ],
-      rotate: "-1.4deg",
-      code: "https://github.com/Vidhi-bhutia/Skillyn",
-    },
-    {
-      tag: "Health",
-      title: "Remedy Relay",
-      stack: "Flask · Gemini · Pinecone · RAG",
-      lines: [
-        "Ingests and chunks medical PDFs, then indexes their embeddings in Pinecone.",
-        "Retrieves relevant passages for Gemini to answer medical questions with document context.",
-      ],
-      rotate: "1.3deg",
-      code: "https://github.com/Vidhi-bhutia/Remedy-Relay",
     },
     {
       tag: "ML",
@@ -1224,7 +1360,6 @@ function ResearchLab() {
         "A diabetes-prediction repository whose current README contains only the project title.",
         "Kept in the archive without additional claims until its model and interface are documented.",
       ],
-      rotate: "-0.6deg",
       code: "https://github.com/Vidhi-bhutia/Diabetes-Prediction",
     },
     {
@@ -1235,7 +1370,6 @@ function ResearchLab() {
         "Finds a route between cities using A* and geographic distance as the heuristic.",
         "Adjusts route cost for traffic levels and excludes roads marked as closed.",
       ],
-      rotate: "0.8deg",
       code: "https://github.com/Vidhi-bhutia/Optimized-A-star",
     },
     {
@@ -1246,7 +1380,6 @@ function ResearchLab() {
         "README describes a general prediction framework with preprocessing and multiple model families.",
         "Documents evaluation through accuracy, precision, recall, and F1 without claiming a specific deployed disease model.",
       ],
-      rotate: "-1.1deg",
       code: "https://github.com/Vidhi-bhutia/Disease-Prediction-Model",
     },
     {
@@ -1257,7 +1390,6 @@ function ResearchLab() {
         "Compares Random Forest, Gradient Boosting, and neural networks for temperature prediction.",
         "Explores model error with MSE, RMSE, MAE, MAPE, residual, distribution, and Q-Q views.",
       ],
-      rotate: "1.1deg",
       code: "https://github.com/Vidhi-bhutia/Climate-Change-Predictions",
     },
     {
@@ -1268,10 +1400,32 @@ function ResearchLab() {
         "Compares three sequence-model architectures for forecasting stock prices from historical data.",
         "Uses Yahoo Finance data as the shared input for LSTM, GRU, and TCN experiments.",
       ],
-      rotate: "-0.7deg",
       code: "https://github.com/Vidhi-bhutia/Stock_Price_Predictor",
     },
   ];
+
+  const tags = [
+    "All",
+    "Dev Tool",
+    "Reliability",
+    "Research",
+    "Automation",
+    "ML",
+    "Simulation",
+    "AI Docs",
+    "Algorithms",
+    "Data Science",
+    "Finance ML",
+  ];
+
+  const filteredArchive = archiveProjects.filter((p) => {
+    const matchesSearch =
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.stack.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.lines.some((l) => l.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesTag = selectedTag === "All" || p.tag === selectedTag;
+    return matchesSearch && matchesTag;
+  });
 
   return (
     <section
@@ -1288,92 +1442,229 @@ function ResearchLab() {
         animate={{ scale: [1, 1.12, 1], x: [0, -20, 0], y: [0, -14, 0] }}
         transition={{ duration: 18, repeat: Infinity }}
       />
-      <div className="mx-auto max-w-6xl">
+
+      <div className="mx-auto max-w-6xl relative">
         <Reveal>
-          <p className="font-hand text-2xl text-rose">- projects & open-source tools</p>
+          <div className="relative inline-block">
+            <p className="font-hand text-2xl text-rose flex items-center gap-2">
+              - projects & open-source tools
+              <Sparkle className="w-4 h-4 text-gold" />
+            </p>
+            <Arrow className="absolute -right-16 top-2 w-12 text-rose/40 rotate-12 hidden md:block" />
+          </div>
           <h2 className="mt-2 font-serif text-5xl md:text-7xl leading-[0.95]">
             Notes from a <span className="italic text-burgundy">curious desk.</span>
           </h2>
-          <p className="mt-6 max-w-2xl text-ink/75">
-            Independent builds, research experiments, automations, and tools released for other
-            developers to use.
+          <p className="mt-6 max-w-2xl text-ink/75 font-serif text-lg leading-relaxed">
+            Flagship creations, research systems, and open utilities designed to turn complexity
+            into utility.
           </p>
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <motion.article className="extension-feature mt-14">
-            <div>
-              <div className="flex items-center gap-3">
-                <span className="extension-mark">M↓</span>
-                <p className="text-xs uppercase tracking-[0.28em] text-gold">
-                  Open source spotlight
-                </p>
-              </div>
-              <h3 className="mt-5 font-serif text-4xl md:text-5xl">README Live Preview</h3>
-              <p className="mt-4 max-w-2xl text-paper/75">
-                Preview Markdown beside your editor with GitHub styling, save-triggered live
-                updates, dark mode, and syntax highlighting for 200+ languages.
-              </p>
-              <p className="mt-4 font-hand text-xl text-gold">Vidhi Bhutia · free extension</p>
-            </div>
-            <div className="extension-download">
-              <strong>113</strong>
-              <span>installs</span>
-              <a
-                href="https://marketplace.visualstudio.com/items?itemName=VidhiBhutia.readme-live-preview&ssr=false#overview"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Install extension ↓
-              </a>
-            </div>
-          </motion.article>
-        </Reveal>
-
-        <div className="mt-16 grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {notes.map((n, i) => (
-            <Reveal key={n.title} delay={i * 0.1}>
-              <Tilt3D max={0}>
+        {/* Flagship Featured Projects Grid */}
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+          {featuredProjects.map((p, i) => (
+            <Reveal key={p.title} delay={i * 0.1}>
+              <Tilt3D max={6} className="h-full">
                 <motion.div
-                  className="project-note relative bg-paper border border-border notebook-lines p-7 pt-10 shadow-[0_20px_50px_-20px_rgba(66,25,36,0.35)] min-h-[400px] flex flex-col"
-                  style={{ transform: `rotate(${n.rotate})` }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 150, damping: 15 }}
+                  className="group relative h-full bg-paper border border-border/80 rounded-sm p-8 md:p-10 shadow-[0_25px_60px_-25px_rgba(66,25,36,0.3)] flex flex-col justify-between"
+                  style={{ rotate: i % 2 === 0 ? "-0.8deg" : "0.8deg" }}
                 >
-                  <div className="tape w-24 h-6 -top-3 left-1/2 -translate-x-1/2 rotate-[-3deg]" />
-                  <div className="absolute top-4 right-5 stamp text-rose text-[10px]">{n.tag}</div>
-                  <h3 className="font-serif text-2xl mt-4">{n.title}</h3>
-                  <p className="mt-2 text-xs uppercase tracking-widest text-rose">{n.stack}</p>
-                  <ul className="mt-6 space-y-4 font-hand text-xl leading-snug text-ink/85 flex-1">
-                    {n.lines.map((l) => (
-                      <li key={l} className="flex gap-2">
-                        <span className="text-gold">›</span>
-                        {l}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 flex flex-wrap items-center gap-4">
-                    {"install" in n && n.install && (
+                  <PaperClip className="absolute top-4 left-6 w-8 h-8 text-rose/40 -rotate-12 group-hover:rotate-0 transition-transform" />
+
+                  <div className="absolute -top-3.5 right-6 bg-ivory border border-border border-b-paper rounded-t px-3 py-0.5 text-[10px] tracking-wider uppercase font-serif text-rose group-hover:bg-gold/15 group-hover:text-burgundy transition-colors">
+                    {p.tag}
+                  </div>
+
+                  <div>
+                    <div className="mt-4">
+                      <h3 className="font-serif text-2xl md:text-3xl leading-tight text-ink relative inline-block group-hover:text-burgundy transition-colors">
+                        {p.title}
+                        <HighlightStroke className="absolute -bottom-2 left-0 w-full text-gold/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </h3>
+                      <p className="mt-2 text-xs font-hand text-rose uppercase tracking-widest">
+                        {p.stack}
+                      </p>
+                    </div>
+
+                    <ul className="mt-8 space-y-4 font-serif text-[16px] leading-relaxed text-ink/85 border-l-2 border-gold/40 pl-5">
+                      {p.lines.map((line, index) => (
+                        <li key={index} className="relative">
+                          <CheckMark className="absolute -left-[30px] top-1.5 w-3.5 h-3.5 text-burgundy/60" />
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {p.doodle && (
+                    <div className="absolute -bottom-5 right-4 font-hand text-lg text-rose/70 italic rotate-[3deg] group-hover:text-burgundy transition-colors">
+                      ~ {p.doodle}
+                    </div>
+                  )}
+
+                  <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-border/45 pt-6">
+                    {p.install ? (
                       <a
-                        href={n.install}
+                        href={p.install}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-full bg-wine px-4 py-2 text-sm text-paper transition-transform hover:-translate-y-1"
+                        className="rounded-full bg-wine text-paper px-5 py-2.5 text-sm font-serif transition-colors hover:bg-burgundy shadow-sm"
                       >
-                        Install ↓
+                        Install Extension ↓
                       </a>
+                    ) : null}
+                    {p.code ? (
+                      <a
+                        href={p.code}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm text-burgundy hover:text-wine font-serif italic transition-colors"
+                      >
+                        View code on GitHub ↗
+                      </a>
+                    ) : (
+                      <span className="text-xs uppercase tracking-widest text-ink/40 font-serif italic">
+                        Enterprise Source
+                      </span>
                     )}
-                    <a
-                      href={n.code}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-burgundy hover:text-wine font-serif italic"
-                    >
-                      View code ↗
-                    </a>
                   </div>
                 </motion.div>
               </Tilt3D>
             </Reveal>
           ))}
+        </div>
+
+        {/* PROJECT ARCHIVE filing cabinet drawer */}
+        <div className="mt-28 border-t border-border/80 pt-20">
+          <div className="flex flex-col items-center">
+            <Reveal>
+              <div className="relative">
+                <motion.button
+                  onClick={() => setArchiveOpen(!archiveOpen)}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="relative flex flex-col items-center bg-paper border-2 border-burgundy rounded px-12 py-5 shadow-[0_12px_28px_-8px_rgba(66,25,36,0.3)] cursor-pointer select-none group"
+                >
+                  <div className="w-24 h-4 rounded-full border-2 border-burgundy/60 bg-ivory shadow-inner flex items-center justify-center mb-2">
+                    <div className="w-20 h-1.5 bg-burgundy/20 rounded-full" />
+                  </div>
+                  <span className="font-serif text-lg font-medium text-burgundy uppercase tracking-widest group-hover:text-wine">
+                    {archiveOpen ? "Close Project Drawer" : "View Archive (11+ Projects)"}
+                  </span>
+                  <div className="font-hand text-sm text-rose/70 mt-1 italic">
+                    {archiveOpen ? "Click to close filing cabinet" : "Click to slide drawer open"}
+                  </div>
+
+                  <div className="absolute -top-6 -right-12 bg-gold text-wine font-hand text-xs rounded px-2.5 py-1 rotate-[8deg] shadow-sm pointer-events-none group-hover:rotate-[15deg] transition-transform">
+                    experiments inside!
+                  </div>
+                </motion.button>
+              </div>
+            </Reveal>
+
+            <AnimatePresence>
+              {archiveOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full overflow-hidden mt-12 bg-ivory/50 border border-border/80 rounded-sm p-6 md:p-10 shadow-[inset_0_4px_16px_rgba(0,0,0,0.05)]"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border/60 pb-8">
+                    <div>
+                      <h4 className="font-serif text-2xl text-ink">The Research Catalog</h4>
+                      <p className="font-hand text-lg text-rose mt-1">
+                        Scribbles, utilities, and older data models
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      <select
+                        value={selectedTag}
+                        onChange={(e) => setSelectedTag(e.target.value)}
+                        className="bg-paper border border-border rounded-full px-4 py-2 text-xs font-serif text-ink focus:outline-none focus:border-burgundy"
+                      >
+                        {tags.map((t) => (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+
+                      <input
+                        type="text"
+                        placeholder="Search files..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="bg-paper border border-border rounded-full px-4 py-2 text-xs font-serif text-ink placeholder:text-ink/40 focus:outline-none focus:border-burgundy"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <AnimatePresence mode="popLayout">
+                      {filteredArchive.map((n, i) => (
+                        <motion.div
+                          key={n.title}
+                          layout
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          transition={{ duration: 0.3 }}
+                          whileHover={{ y: -4, rotate: i % 2 === 0 ? "-1deg" : "1deg" }}
+                          className="relative bg-paper border border-border rounded-sm p-6 shadow-sm min-h-[220px] flex flex-col justify-between group"
+                        >
+                          <div className="tape w-16 h-4.5 -top-2 left-6 rotate-[-4deg] opacity-75" />
+                          <div className="absolute top-4 right-4 text-[9px] uppercase tracking-widest text-rose bg-rose/5 px-2 py-0.5 rounded">
+                            {n.tag}
+                          </div>
+
+                          <div className="mt-4">
+                            <h3 className="font-serif text-xl mt-2 group-hover:text-burgundy transition-colors">
+                              {n.title}
+                            </h3>
+                            <p className="mt-1 text-[11px] uppercase tracking-wider text-rose">
+                              {n.stack}
+                            </p>
+                            <ul className="mt-4 space-y-2 font-hand text-base text-ink/80">
+                              {n.lines.map((line, idx) => (
+                                <li key={idx} className="flex gap-2">
+                                  <span className="text-gold">›</span>
+                                  <span>{line}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="mt-6 border-t border-border/30 pt-4 flex items-center justify-between">
+                            <a
+                              href={n.code}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-xs text-burgundy hover:text-wine font-serif italic inline-flex items-center gap-1"
+                            >
+                              Open file ↗
+                            </a>
+                            <CheckMark className="w-3.5 h-3.5 text-gold/40" />
+                          </div>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
+
+                    {filteredArchive.length === 0 && (
+                      <div className="col-span-full py-16 text-center font-hand text-2xl text-rose/80">
+                        No documents found matching the query.
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
@@ -1417,15 +1708,57 @@ function Impact() {
 
 /* ====================== SKILLS (from resume only) ====================== */
 function Playground() {
-  const skills = [
+  const [rotation, setRotation] = useState(0);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [scale, setScale] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Resize listener to scale the system for mobile devices
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window === "undefined") return;
+      const width = window.innerWidth;
+      if (width < 768) {
+        setScale(Math.min(1, (width - 40) / 760));
+      } else if (width < 1024) {
+        setScale(Math.min(1, (width - 80) / 760));
+      } else {
+        setScale(1);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Continuous animation loop for orbits
+  useEffect(() => {
+    let frameId: number;
+    let lastTime = performance.now();
+    const update = (time: number) => {
+      const delta = time - lastTime;
+      lastTime = time;
+      // Orbit slows down or stops if any technology is hovered, rotating at a calm pace normally
+      const speed = hoveredSkill ? 0.0008 : 0.005; 
+      setRotation(prev => (prev + speed * delta) % 360);
+      frameId = requestAnimationFrame(update);
+    };
+    frameId = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(frameId);
+  }, [hoveredSkill]);
+
+  const orbit1Skills = [
     ["Python", "Python.png"],
     ["JavaScript", "JavaScript.png"],
     ["TypeScript", "TypeScript.png"],
     ["React", "React.png"],
     ["Node.js", "Node.js.png"],
-    ["Express", "Express.png"],
     ["FastAPI", "FastAPI.png"],
-    ["Streamlit", "Streamlit.png"],
+    ["Express", "Express.png"],
+    ["Streamlit", "Streamlit.png"]
+  ];
+
+  const orbit2Skills = [
     ["TensorFlow", "TensorFlow (1).png"],
     ["Keras", "Keras.png"],
     ["PyTorch", "PyTorch.png"],
@@ -1435,7 +1768,10 @@ function Playground() {
     ["MySQL", "MySQL.png"],
     ["MongoDB", "MongoDB.png"],
     ["Oracle", "Oracle.png"],
-    ["Azure", "Azure.png"],
+    ["Azure", "Azure.png"]
+  ];
+
+  const orbit3Skills = [
     ["Git", "Git.png"],
     ["GitHub", "GitHub.png"],
     ["Jira", "Jira.png"],
@@ -1445,41 +1781,138 @@ function Playground() {
     ["HTML5", "HTML5.png"],
     ["CSS3", "CSS3.png"],
     ["Tailwind CSS", "Tailwind CSS.png"],
-    ["Vite", "Vite.png"],
+    ["Vite", "Vite.png"]
+  ];
+
+  const orbits = [
+    {
+      id: 1,
+      radius: 125,
+      direction: 1.2, // clockwise
+      skills: orbit1Skills
+    },
+    {
+      id: 2,
+      radius: 220,
+      direction: -0.8, // counter-clockwise
+      skills: orbit2Skills
+    },
+    {
+      id: 3,
+      radius: 315,
+      direction: 0.5, // clockwise
+      skills: orbit3Skills
+    }
   ];
 
   return (
     <section id="skills" className="relative overflow-hidden py-32 px-6">
       <div className="mx-auto max-w-6xl relative">
         <Reveal>
-          <p className="font-hand text-2xl text-rose flex items-center gap-3">
-            - the workshop <Sparkle className="w-4 h-4" />
-          </p>
+          <div className="relative inline-block">
+            <p className="font-hand text-2xl text-rose flex items-center gap-3">
+              - the workshop
+              <Sparkle className="w-4 h-4 text-gold" />
+            </p>
+          </div>
           <h2 className="mt-2 font-serif text-5xl md:text-7xl leading-[0.95]">
-            Tools I <span className="italic text-burgundy">build with.</span>
+            Technology <span className="italic text-burgundy">universe.</span>
           </h2>
-          <p className="mt-6 max-w-xl text-ink/75">
-            A focused selection from my engineering, AI, data, cloud, and product toolkit.
+          <p className="mt-6 max-w-xl text-ink/75 font-serif text-lg leading-relaxed">
+            Hover over any technology symbol to decelerate orbits and inspect its profile.
           </p>
         </Reveal>
 
-        <div className="skills-gallery mt-16">
-          {skills.map(([name, file], index) => (
-            <motion.div
-              key={name}
-              className="skill-logo-card"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: Math.min(index * 0.025, 0.35) }}
-              whileHover={{ y: -6, scale: 1.04 }}
-              tabIndex={0}
-              aria-label={name}
-            >
-              <img src={skillIcon(file)} alt="" />
-              <span>{name}</span>
-            </motion.div>
-          ))}
+        {/* Outer container adjusting height dynamically to prevent vertical gaps when scaled */}
+        <div 
+          className="relative w-full flex items-center justify-center mt-12 overflow-visible"
+          style={{ height: `${760 * scale}px` }}
+        >
+          {/* Inner solar system container with responsive scale */}
+          <div
+            ref={containerRef}
+            style={{
+              transform: `scale(${scale})`,
+              transformOrigin: "center center"
+            }}
+            className="absolute w-[760px] h-[760px] flex items-center justify-center select-none"
+          >
+            {/* Sketch Background annotations */}
+            <div className="absolute top-4 left-6 font-hand text-rose/40 text-lg rotate-[-5deg] pointer-events-none">
+              * celestial mapping of systems
+            </div>
+            <div className="absolute bottom-8 right-6 font-hand text-rose/40 text-lg rotate-[4deg] pointer-events-none">
+              ~ built step-by-step
+            </div>
+
+            {/* Orbit lines */}
+            <div className="absolute rounded-full border border-dashed border-border/80 pointer-events-none" style={{ width: 250, height: 250, left: "255px", top: "255px" }} />
+            <div className="absolute rounded-full border border-dashed border-border/80 pointer-events-none" style={{ width: 440, height: 440, left: "160px", top: "160px" }} />
+            <div className="absolute rounded-full border border-dashed border-border/80 pointer-events-none" style={{ width: 630, height: 630, left: "65px", top: "65px" }} />
+
+            {/* Center System Core (Skills) */}
+            <div className="absolute w-20 h-20 rounded-full bg-paper border-2 border-burgundy shadow-[0_6px_20px_-8px_rgba(66,25,36,0.4)] flex items-center justify-center text-center p-3 z-20" style={{ left: "340px", top: "340px" }}>
+              <CircleDoodle className="absolute inset-0 w-full h-full text-rose/30 pointer-events-none" />
+              <span className="font-serif text-sm font-semibold tracking-widest text-burgundy relative z-10">
+                SKILLS
+              </span>
+            </div>
+
+            {/* Direct Skills Orbiting Nodes */}
+            {orbits.map((orbit) => {
+              return orbit.skills.map(([name, file], idx) => {
+                const baseAngle = (idx * 360) / orbit.skills.length;
+                const angle = baseAngle + rotation * orbit.direction;
+                const rad = (angle * Math.PI) / 180;
+                const x = Math.cos(rad) * orbit.radius;
+                const y = Math.sin(rad) * orbit.radius;
+
+                const isHovered = hoveredSkill === name;
+                const isOtherHovered = hoveredSkill !== null && !isHovered;
+
+                return (
+                  <motion.div
+                    key={name}
+                    onMouseEnter={() => setHoveredSkill(name)}
+                    onMouseLeave={() => setHoveredSkill(null)}
+                    style={{
+                      left: `${352 + x}px`,
+                      top: `${352 + y}px`,
+                      zIndex: isHovered ? 40 : 10,
+                    }}
+                    className="absolute"
+                    animate={{
+                      scale: isHovered ? 1.35 : 1,
+                      opacity: isOtherHovered ? 0.35 : 1,
+                    }}
+                    transition={{ type: "spring", stiffness: 180, damping: 14 }}
+                  >
+                    <div 
+                      className="relative w-14 h-14 rounded-full bg-paper border border-border shadow-md flex items-center justify-center p-2.5 cursor-pointer group"
+                      style={{ borderColor: isHovered ? "var(--burgundy)" : "var(--border)" }}
+                    >
+                      {isHovered && (
+                        <CircleDoodle className="absolute -inset-2.5 w-[135%] h-[135%] text-gold animate-[spin_8s_linear_infinite] pointer-events-none" />
+                      )}
+                      
+                      <img
+                        src={skillIcon(file)}
+                        alt={name}
+                        className="w-9 h-9 object-contain select-none pointer-events-none"
+                      />
+                      
+                      {/* Floating handwritten label */}
+                      {isHovered && (
+                        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-hand text-[15px] leading-none text-wine font-medium whitespace-nowrap bg-paper border border-border px-2 py-1 rounded shadow-sm z-50">
+                          {name}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              });
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -1536,16 +1969,32 @@ function WallOfWins() {
   ] as const;
 
   return (
-    <section className="relative py-32 px-6 ivory-texture border-y border-border">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative py-32 px-6 ivory-texture border-y border-border overflow-hidden">
+      <div className="mx-auto max-w-6xl relative">
         <Reveal>
-          <p className="font-hand text-2xl text-rose">- wall of wins</p>
+          <div className="relative inline-block">
+            <p className="font-hand text-2xl text-rose flex items-center gap-2">
+              - wall of wins
+              <CheckMark className="w-4 h-4 text-burgundy" />
+            </p>
+          </div>
           <h2 className="mt-2 font-serif text-5xl md:text-7xl leading-[0.95]">
             Pinned, in <span className="italic text-burgundy">no order at all.</span>
           </h2>
         </Reveal>
 
         <div className="mt-16 relative grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Handwritten margin notes */}
+          <div className="absolute -top-10 -left-6 font-hand text-lg text-rose/60 -rotate-[10deg] hidden lg:block z-10">
+            * university & boards
+          </div>
+          <div className="absolute -bottom-10 left-1/3 font-hand text-lg text-burgundy/60 rotate-[4deg] hidden lg:block z-10">
+            * extension & tools automation
+          </div>
+          <div className="absolute top-1/2 -right-10 font-hand text-lg text-rose/60 rotate-[-8deg] hidden lg:block z-10">
+            * internship metrics!
+          </div>
+
           {wins.map((w, i) => (
             <Reveal key={i} delay={i * 0.05}>
               <Tilt3D max={14}>
@@ -1556,7 +2005,11 @@ function WallOfWins() {
                   className="relative"
                 >
                   {w.kind === "Polaroid" && (
-                    <div className="polaroid">
+                    <div className="polaroid relative">
+                      {/* Paperclip overlay on Polaroids */}
+                      {i % 2 === 0 && (
+                        <PaperClip className="absolute top-2 right-2 w-6 h-6 text-rose/40 rotate-[15deg] z-25 pointer-events-none" />
+                      )}
                       <div
                         className={`aspect-square ${w.color} relative overflow-hidden flex items-center justify-center text-paper p-4 text-center`}
                       >
@@ -1568,14 +2021,16 @@ function WallOfWins() {
                   )}
                   {w.kind === "Sticky" && (
                     <div
-                      className={`${w.color} aspect-square p-5 shadow-[0_15px_30px_-10px_rgba(66,25,36,0.4)] flex flex-col justify-center`}
+                      className={`${w.color} aspect-square p-5 shadow-[0_15px_30px_-10px_rgba(66,25,36,0.4)] flex flex-col justify-center relative`}
                     >
+                      {/* Pushpin circle dot doodle */}
+                      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-burgundy/40 border border-burgundy/60" />
                       <div className="font-hand text-3xl leading-tight text-wine">{w.text}</div>
                       <div className="mt-3 text-sm text-wine/80">{w.sub}</div>
                     </div>
                   )}
                   {w.kind === "Stamp" && (
-                    <div className="bg-paper border-2 border-burgundy aspect-square flex flex-col items-center justify-center p-4 text-center">
+                    <div className="bg-paper border-2 border-burgundy aspect-square flex flex-col items-center justify-center p-4 text-center relative">
                       <div className="text-[10px] uppercase tracking-[0.3em] text-burgundy">
                         Approved
                       </div>
@@ -1654,9 +2109,10 @@ function Contact() {
                 <div className="text-right font-hand text-xl text-ink/70">{time}</div>
                 <p className="mt-8 font-serif text-2xl italic">Dear visitor,</p>
                 <p className="mt-6 text-lg leading-relaxed text-ink/85 font-serif">
-                  If you've made it this far, thank you.
-
-                  I enjoy conversations about software, AI, research, product building, and ambitious ideas. Whether it's a role, collaboration, startup idea, or simply a good discussion, I'd love to hear from you.
+                  If you've made it this far, thank you. I enjoy conversations about software, AI,
+                  research, product building, and ambitious ideas. Whether it's a role,
+                  collaboration, startup idea, or simply a good discussion, I'd love to hear from
+                  you.
                 </p>
 
                 <div className="mt-10 grid sm:grid-cols-2 gap-6 text-sm">

@@ -11,6 +11,15 @@ import { useRef, useState, useEffect } from "react";
 import logoImage from "@/assets/vidhi-logo.png";
 import doodleImage from "@/assets/vidhi-doodle.png";
 
+const skillIconModules = import.meta.glob("../assets/icons/*.png", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+const skillIcon = (fileName: string) =>
+  skillIconModules[`../assets/icons/${fileName}`];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -502,7 +511,7 @@ function Hero() {
 
           <Reveal delay={0.3}>
             <p className="mt-10 max-w-xl text-lg leading-relaxed text-ink/80">
-              I build software, AI/ML tools, and research-driven products. I like turning messy
+              Engineer, researcher, and product thinker building software that turns complex problems into systems people can actually use. I like turning messy
               ideas into clear systems that are easy to use, easy to explain, and useful in real
               work.
             </p>
@@ -532,7 +541,7 @@ function Hero() {
             <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 text-sm">
               {[
                 ["Based in", "Pune, IN"],
-                ["Studying", "CSE & Business Systems"],
+                ["Degree", "CSE & Business Systems"],
                 ["CGPA", "9.04 / 10"],
                 ["Focus", "AI · Build · Research"],
               ].map(([k, v]) => (
@@ -698,7 +707,7 @@ function Marquee() {
     "✦",
     "Builder",
     "✦",
-    "Designer",
+    "Analyst",
     "✦",
     "Tinkerer",
     "✦",
@@ -930,7 +939,6 @@ function WorkJourney() {
 function SelectedWork() {
   const cases = [
     {
-      no: "01",
       title: "Workforce Monitoring Platform",
       where: "People Prudent · 2026",
       problem: "Teams needed work tracking without making people feel watched.",
@@ -943,7 +951,6 @@ function SelectedWork() {
       code: null,
     },
     {
-      no: "02",
       title: "Bug-spotting Dashboard",
       where: "Morgan Stanley · 2025",
       problem: "Onboarding teams were spending too much time reading logs.",
@@ -953,23 +960,21 @@ function SelectedWork() {
       impact: ["30% faster bug detection", "50,000+ daily logs read", "15+ live charts"],
       stack: "Python · Dash · ML · Log parsing",
       live: null,
-      code: "https://github.com/Vidhi-bhutia?tab=repositories",
+      code: null,
     },
     {
-      no: "03",
       title: "ESG Reporting Dashboard",
       where: "Northstar Impact · 2024",
       problem: "Sustainability data looked different at every company.",
       thinking: "Leaders need one clear format, not more noise.",
       approach:
         "Studied 20+ companies, created one ESG format for 5 power companies, and built clean Power BI dashboards.",
-      impact: ["20+ firms studied", "3 product decisions made", "20% clearer insights"],
+      impact: ["20+ firms studied", "5 power companies analyzed", "4 reporting frameworks compared"],
       stack: "Power BI · Research · ESG",
       live: null,
-      code: "https://github.com/Vidhi-bhutia?tab=repositories",
+      code: null,
     },
     {
-      no: "04",
       title: "Stock Market Prediction Lab",
       where: "NIT Rourkela · 2024",
       problem:
@@ -1004,39 +1009,27 @@ function SelectedWork() {
         </Reveal>
 
         <div className="mt-20 space-y-28">
-          {cases.map((c) => (
-            <Reveal key={c.no} delay={0.05}>
+          {cases.map((c, caseIndex) => (
+            <Reveal key={c.title} delay={0.05}>
               <article className="grid lg:grid-cols-12 gap-10">
                 <div className="lg:col-span-4">
                   <div className="sticky top-32">
-                    <div className="font-serif text-[7rem] leading-none text-burgundy/15">
-                      {c.no}
+                    <div className="mb-5 inline-flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-rose">
+                      <span className="h-px w-10 bg-gold" />
+                      Internship project {String(caseIndex + 1).padStart(2, "0")}
                     </div>
-                    <h3 className="mt-2 font-serif text-3xl md:text-4xl">{c.title}</h3>
+                    <h3 className="font-serif text-3xl md:text-4xl">{c.title}</h3>
                     <p className="mt-3 text-rose italic">{c.where}</p>
-                    <div className="mt-6 stamp inline-block text-burgundy text-xs">
-                      case · file {c.no}
-                    </div>
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      {c.live && (
-                        <a
-                          href={c.live}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 text-sm rounded-full bg-wine text-paper px-4 py-2 hover:bg-burgundy transition-colors"
-                        >
-                          Visit ↗
-                        </a>
-                      )}
+                    {c.code && (
                       <a
                         href={c.code}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 text-sm rounded-full border border-burgundy text-burgundy px-4 py-2 hover:bg-burgundy hover:text-paper transition-colors"
+                        className="mt-6 inline-flex items-center gap-2 rounded-full border border-burgundy px-4 py-2 text-sm text-burgundy transition-colors hover:bg-burgundy hover:text-paper"
                       >
-                        Code ↗
+                        View research code ↗
                       </a>
-                    </div>
+                    )}
                   </div>
                 </div>
 
@@ -1092,8 +1085,8 @@ function ResearchLab() {
       title: "README Live Preview",
       stack: "VS Code Extension · Free",
       lines: [
-        "Convert and view Markdown files in GitHub-style format with syntax highlighting.",
-        "Published by Vidhi Bhutia with 113 installs.",
+        "Previews Markdown beside the editor with GitHub styling and automatic refresh on save.",
+        "Supports tables, task lists, images, dark mode, and syntax highlighting for 200+ languages.",
       ],
       rotate: "-1.2deg",
       code: "https://github.com/Vidhi-bhutia/Github-Readme-Viewer",
@@ -1102,11 +1095,11 @@ function ResearchLab() {
     },
     {
       tag: "Dev Tool",
-      title: "Project Dependency Detector",
-      stack: "Python · CLI · DevEx",
+      title: "Code Change Impact Analyzer",
+      stack: "Python · Static Analysis · CLI",
       lines: [
-        "Scans projects and lists dependencies quickly.",
-        "Helps teams audit and clean package usage.",
+        "Parses Python imports, function definitions, and calls to build dependency graphs.",
+        "Predicts which modules and tests may be affected when a file changes.",
       ],
       rotate: "1.2deg",
       code: "https://github.com/Vidhi-bhutia/Project-Dependency-Detector",
@@ -1117,8 +1110,8 @@ function ResearchLab() {
       title: "Service Health Checker",
       stack: "Python · Monitoring",
       lines: [
-        "Tracks service uptime and status in one place.",
-        "Built to catch issues before users report them.",
+        "Runs TCP, HTTP, and disk-space checks for production readiness and deployments.",
+        "Provides library and CLI output with automation-friendly exit codes and no dependencies.",
       ],
       rotate: "-0.8deg",
       code: "https://github.com/Vidhi-bhutia/Service-Health-Checker",
@@ -1127,10 +1120,10 @@ function ResearchLab() {
     {
       tag: "Research",
       title: "Health Analysis using Federated Learning",
-      stack: "Python · FL · Privacy",
+      stack: "Flask · XGBoost · FedAvg · Gemini",
       lines: [
-        "Trains across clients without moving private data.",
-        "Uses federated learning for safer collaboration.",
+        "Predicts four health risks using models trained across three simulated hospitals.",
+        "Aggregates XGBoost linear weights with FedAvg and adds health tips and appointments.",
       ],
       rotate: "1.4deg",
       code: "https://github.com/Vidhi-bhutia/Health-Analysis-using-Federated-Learning-and-Cloud",
@@ -1140,8 +1133,8 @@ function ResearchLab() {
       title: "N8N Job Search Automation",
       stack: "n8n · APIs · Sheets · Telegram",
       lines: [
-        "Runs recurring job searches automatically.",
-        "Writes matches to sheets and sends instant alerts.",
+        "Runs configurable LinkedIn searches every six hours from preferences stored in Sheets.",
+        "Parses a Drive-hosted resume, deduplicates results, rate-limits requests, and alerts via Telegram.",
       ],
       rotate: "-1.5deg",
       code: "https://github.com/Vidhi-bhutia/N8N-Job-Search-Automation",
@@ -1149,10 +1142,10 @@ function ResearchLab() {
     {
       tag: "Agents",
       title: "Agentic AI Researcher",
-      stack: "Python · LangGraph · Gemini",
+      stack: "Python · Gemini · arXiv · Streamlit",
       lines: [
-        "A multi-agent pipeline for step-by-step research.",
-        "Cuts repeated work and improves output consistency.",
+        "Plans a research task, discovers arXiv papers, extracts PDFs, and synthesizes structured sections.",
+        "Generates LaTeX and a compiled PDF as a draft that explicitly requires human validation.",
       ],
       rotate: "1deg",
       code: "https://github.com/Vidhi-bhutia/Agentic-AI-Researcher",
@@ -1160,10 +1153,10 @@ function ResearchLab() {
     {
       tag: "ML",
       title: "Job Recommendation System",
-      stack: "ML · Ranking",
+      stack: "Flask · Gemini · BeautifulSoup",
       lines: [
-        "Recommends jobs from profile and preference signals.",
-        "Built to speed up decision-making for applicants.",
+        "Scrapes live LinkedIn and Workday listings with custom filtering instead of a paid data API.",
+        "Compares a PDF resume with each role and explains fit scores and improvement advice.",
       ],
       rotate: "-1deg",
       code: "https://github.com/Vidhi-bhutia/Job-Recommendation-System",
@@ -1171,10 +1164,10 @@ function ResearchLab() {
     {
       tag: "Simulation",
       title: "Neuromorphic Routing Simulator",
-      stack: "Research · TypeScript",
+      stack: "Python · FastAPI · AsyncIO",
       lines: [
-        "Tests brain-inspired approaches to network routing.",
-        "Explores adaptive behavior under changing load.",
+        "Compares traditional routing with a decentralized winner-takes-all simulation.",
+        "Reinforces faster services over time and visualizes latency, throughput, and reliability.",
       ],
       rotate: "0.7deg",
       code: "https://github.com/Vidhi-bhutia/Neuromorphic-Routing-Simulator",
@@ -1182,18 +1175,21 @@ function ResearchLab() {
     {
       tag: "AI Docs",
       title: "Documentation AI",
-      stack: "AI · TypeScript",
-      lines: ["Generates documentation from code context.", "Improves handoff quality for teams."],
+      stack: "React · TypeScript · Gemini · PlantUML",
+      lines: [
+        "Analyzes an uploaded codebase ZIP and drafts architecture and module documentation.",
+        "Generates multiple UML diagram types and exports the finished notebook as a PDF.",
+      ],
       rotate: "-0.9deg",
       code: "https://github.com/Vidhi-bhutia/Documentation-AI",
     },
     {
       tag: "Crypto",
       title: "Stateful Hash Based Signature Scheme",
-      stack: "Security · Cryptography",
+      stack: "Python · Streamlit · SQLite · Cryptography",
       lines: [
-        "Implements and studies stateful hash signatures.",
-        "Focused on post-quantum-safe signing ideas.",
+        "Research prototype for hashing, signing, verifying, and storing long-lived document metadata.",
+        "Attempts XMSS, LMS, or SPHINCS integrations and clearly labels its Ed25519 demo fallback as non-quantum-safe.",
       ],
       rotate: "1.6deg",
       code: "https://github.com/Vidhi-bhutia/Stateful-Hash-Based-Signature-Scheme",
@@ -1201,10 +1197,10 @@ function ResearchLab() {
     {
       tag: "Product",
       title: "Skillyn",
-      stack: "Platform · Learning",
+      stack: "Streamlit · Gemini · PyPDF2",
       lines: [
-        "Skill learning product with guided paths.",
-        "Designed for easy navigation and progress tracking.",
+        "Analyzes a PDF resume against a pasted job description for ATS alignment.",
+        "Returns a match percentage, missing keywords, profile summary, and actionable feedback.",
       ],
       rotate: "-1.4deg",
       code: "https://github.com/Vidhi-bhutia/Skillyn",
@@ -1212,10 +1208,10 @@ function ResearchLab() {
     {
       tag: "Health",
       title: "Remedy Relay",
-      stack: "HealthTech",
+      stack: "Flask · Gemini · Pinecone · RAG",
       lines: [
-        "A healthcare-focused coordination concept.",
-        "Built to simplify communication and follow-ups.",
+        "Ingests and chunks medical PDFs, then indexes their embeddings in Pinecone.",
+        "Retrieves relevant passages for Gemini to answer medical questions with document context.",
       ],
       rotate: "1.3deg",
       code: "https://github.com/Vidhi-bhutia/Remedy-Relay",
@@ -1225,8 +1221,8 @@ function ResearchLab() {
       title: "Diabetes Prediction",
       stack: "Machine Learning",
       lines: [
-        "Predicts diabetes risk from health features.",
-        "Explains outcomes in a simple, readable format.",
+        "A diabetes-prediction repository whose current README contains only the project title.",
+        "Kept in the archive without additional claims until its model and interface are documented.",
       ],
       rotate: "-0.6deg",
       code: "https://github.com/Vidhi-bhutia/Diabetes-Prediction",
@@ -1234,10 +1230,10 @@ function ResearchLab() {
     {
       tag: "Algorithms",
       title: "Optimized A-star",
-      stack: "Pathfinding · Algorithms",
+      stack: "C++ · A* · Haversine",
       lines: [
-        "Improves route-finding performance with heuristics.",
-        "Built for faster shortest-path exploration.",
+        "Finds a route between cities using A* and geographic distance as the heuristic.",
+        "Adjusts route cost for traffic levels and excludes roads marked as closed.",
       ],
       rotate: "0.8deg",
       code: "https://github.com/Vidhi-bhutia/Optimized-A-star",
@@ -1247,8 +1243,8 @@ function ResearchLab() {
       title: "Disease Prediction Model",
       stack: "Machine Learning",
       lines: [
-        "Classifies disease probabilities from symptom patterns.",
-        "Focused on interpretable, practical predictions.",
+        "README describes a general prediction framework with preprocessing and multiple model families.",
+        "Documents evaluation through accuracy, precision, recall, and F1 without claiming a specific deployed disease model.",
       ],
       rotate: "-1.1deg",
       code: "https://github.com/Vidhi-bhutia/Disease-Prediction-Model",
@@ -1256,10 +1252,10 @@ function ResearchLab() {
     {
       tag: "Data Science",
       title: "Climate Change Predictions",
-      stack: "Forecasting · Data",
+      stack: "Streamlit · scikit-learn · Visualization",
       lines: [
-        "Models long-term climate trend movement.",
-        "Turns historical signals into future estimates.",
+        "Compares Random Forest, Gradient Boosting, and neural networks for temperature prediction.",
+        "Explores model error with MSE, RMSE, MAE, MAPE, residual, distribution, and Q-Q views.",
       ],
       rotate: "1.1deg",
       code: "https://github.com/Vidhi-bhutia/Climate-Change-Predictions",
@@ -1267,10 +1263,10 @@ function ResearchLab() {
     {
       tag: "Finance ML",
       title: "Stock Price Predictor",
-      stack: "Time Series · ML",
+      stack: "LSTM · GRU · TCN · Yahoo Finance",
       lines: [
-        "Forecasts price movement from market history.",
-        "Built as a learning-focused prediction project.",
+        "Compares three sequence-model architectures for forecasting stock prices from historical data.",
+        "Uses Yahoo Finance data as the shared input for LSTM, GRU, and TCN experiments.",
       ],
       rotate: "-0.7deg",
       code: "https://github.com/Vidhi-bhutia/Stock_Price_Predictor",
@@ -1305,7 +1301,7 @@ function ResearchLab() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <motion.article whileHover={{ y: -6 }} className="extension-feature mt-14">
+          <motion.article className="extension-feature mt-14">
             <div>
               <div className="flex items-center gap-3">
                 <span className="extension-mark">M↓</span>
@@ -1315,12 +1311,10 @@ function ResearchLab() {
               </div>
               <h3 className="mt-5 font-serif text-4xl md:text-5xl">README Live Preview</h3>
               <p className="mt-4 max-w-2xl text-paper/75">
-                Convert and view Markdown files in GitHub-style format with syntax highlighting,
-                directly inside VS Code.
+                Preview Markdown beside your editor with GitHub styling, save-triggered live
+                updates, dark mode, and syntax highlighting for 200+ languages.
               </p>
-              <p className="mt-4 font-hand text-xl text-gold">
-                Vidhi Bhutia · free extension
-              </p>
+              <p className="mt-4 font-hand text-xl text-gold">Vidhi Bhutia · free extension</p>
             </div>
             <div className="extension-download">
               <strong>113</strong>
@@ -1339,11 +1333,9 @@ function ResearchLab() {
         <div className="mt-16 grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           {notes.map((n, i) => (
             <Reveal key={n.title} delay={i * 0.1}>
-              <Tilt3D max={14}>
+              <Tilt3D max={0}>
                 <motion.div
-                  whileHover={{ y: -10, rotate: 0, scale: 1.01 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 14 }}
-                  className="relative bg-paper border border-border notebook-lines p-7 pt-10 shadow-[0_20px_50px_-20px_rgba(66,25,36,0.35)] min-h-[400px] flex flex-col"
+                  className="project-note relative bg-paper border border-border notebook-lines p-7 pt-10 shadow-[0_20px_50px_-20px_rgba(66,25,36,0.35)] min-h-[400px] flex flex-col"
                   style={{ transform: `rotate(${n.rotate})` }}
                 >
                   <div className="tape w-24 h-6 -top-3 left-1/2 -translate-x-1/2 rotate-[-3deg]" />
@@ -1393,7 +1385,7 @@ function Impact() {
   const stats = [
     ["9.04", "CGPA at VIT"],
     ["50k+", "Daily logs read"],
-    ["60%", "Less repeat research"],
+    ["20+", "Projects Built"],
     ["113", "Extension installs"],
   ];
   return (
@@ -1425,88 +1417,36 @@ function Impact() {
 
 /* ====================== SKILLS (from resume only) ====================== */
 function Playground() {
-  const groups = [
-    {
-      label: "AI & Machine Learning",
-      note: "Models, agents, evaluation, and responsible AI.",
-      items: [
-        { name: "TensorFlow", slug: "tensorflow" },
-        { name: "Keras", slug: "keras" },
-        { name: "Scikit-learn", slug: "scikitlearn" },
-        { name: "Agentic AI", monogram: "AI" },
-        { name: "NLP", monogram: "NLP" },
-        { name: "Computer Vision", monogram: "CV" },
-        { name: "GenAI", monogram: "Gen" },
-      ],
-    },
-    {
-      label: "Software Engineering",
-      note: "Product-grade interfaces, APIs, and core systems.",
-      items: [
-        { name: "Python", slug: "python" },
-        { name: "JavaScript", slug: "javascript" },
-        { name: "C++", slug: "cplusplus" },
-        { name: "React", slug: "react" },
-        { name: "Node.js", slug: "nodedotjs" },
-        { name: "Next.js", slug: "nextdotjs" },
-        { name: "Flask", slug: "flask" },
-        { name: "Git", slug: "git" },
-      ],
-    },
-    {
-      label: "Data & Analytics",
-      note: "From raw records to decisions people can act on.",
-      items: [
-        { name: "Power BI", monogram: "BI" },
-        { name: "Excel", slug: "microsoftexcel" },
-        { name: "MySQL", slug: "mysql" },
-        { name: "MongoDB", slug: "mongodb" },
-        { name: "Oracle", slug: "oracle" },
-        { name: "R", slug: "r" },
-        { name: "Statistics", monogram: "Σ" },
-      ],
-    },
-    {
-      label: "Cloud & Infrastructure",
-      note: "Deployments, observability, access, and reliability.",
-      items: [
-        { name: "AWS", slug: "amazonaws" },
-        { name: "EC2", slug: "amazonec2" },
-        { name: "Azure", slug: "microsoftazure" },
-        { name: "CI/CD", monogram: "CI" },
-        { name: "IAM", monogram: "IAM" },
-        { name: "CloudWatch", monogram: "CW" },
-        { name: "RBAC", monogram: "RB" },
-      ],
-    },
-    {
-      label: "Automation",
-      note: "Connected workflows that remove repetitive work.",
-      items: [
-        { name: "n8n", slug: "n8n" },
-        { name: "APIs", monogram: "API" },
-        { name: "Web Scraping", monogram: "</>" },
-        { name: "BeautifulSoup", monogram: "BS" },
-        { name: "Opal", monogram: "OP" },
-        { name: "MSI Packaging", monogram: "MSI" },
-      ],
-    },
-    {
-      label: "Rapid Prototyping",
-      note: "Fast experiments for testing product direction.",
-      items: [
-        { name: "Cursor", slug: "cursor" },
-        { name: "Replit", slug: "replit" },
-        { name: "GitHub", slug: "github" },
-        { name: "Google AI Studio", monogram: "G" },
-        { name: "Lovable", monogram: "L" },
-        { name: "v0", monogram: "v0" },
-        { name: "Jira", slug: "jira" },
-      ],
-    },
+  const skills = [
+    ["Python", "Python.png"],
+    ["JavaScript", "JavaScript.png"],
+    ["TypeScript", "TypeScript.png"],
+    ["React", "React.png"],
+    ["Node.js", "Node.js.png"],
+    ["Express", "Express.png"],
+    ["FastAPI", "FastAPI.png"],
+    ["Streamlit", "Streamlit.png"],
+    ["TensorFlow", "TensorFlow (1).png"],
+    ["Keras", "Keras.png"],
+    ["PyTorch", "PyTorch.png"],
+    ["Pandas", "Pandas.png"],
+    ["NumPy", "NumPy.png"],
+    ["Matplotlib", "Matplotlib.png"],
+    ["MySQL", "MySQL.png"],
+    ["MongoDB", "MongoDB.png"],
+    ["Oracle", "Oracle.png"],
+    ["Azure", "Azure.png"],
+    ["Git", "Git.png"],
+    ["GitHub", "GitHub.png"],
+    ["Jira", "Jira.png"],
+    ["Postman", "Postman.png"],
+    ["Jupyter", "Jupyter.png"],
+    ["LaTeX", "LaTeX.png"],
+    ["HTML5", "HTML5.png"],
+    ["CSS3", "CSS3.png"],
+    ["Tailwind CSS", "Tailwind CSS.png"],
+    ["Vite", "Vite.png"],
   ];
-  const [active, setActive] = useState(0);
-  const current = groups[active];
 
   return (
     <section id="skills" className="relative overflow-hidden py-32 px-6">
@@ -1516,82 +1456,30 @@ function Playground() {
             - the workshop <Sparkle className="w-4 h-4" />
           </p>
           <h2 className="mt-2 font-serif text-5xl md:text-7xl leading-[0.95]">
-            A living <span className="italic text-burgundy">tool cloud.</span>
+            Tools I <span className="italic text-burgundy">build with.</span>
           </h2>
           <p className="mt-6 max-w-xl text-ink/75">
-            Choose a practice area and explore the tools I reach for. The stack changes; the ability
-            to learn, connect, and ship does not.
+            A focused selection from my engineering, AI, data, cloud, and product toolkit.
           </p>
         </Reveal>
 
-        <div className="skill-stage mt-16">
-          <div className="skill-tabs" role="tablist" aria-label="Skill categories">
-            {groups.map((group, i) => (
-              <button
-                key={group.label}
-                role="tab"
-                aria-selected={active === i}
-                onClick={() => setActive(i)}
-                className={`skill-tab ${active === i ? "is-active" : ""}`}
-              >
-                <span>{String(i + 1).padStart(2, "0")}</span>
-                {group.label}
-              </button>
-            ))}
-          </div>
-          <div className="skill-cloud">
-            <div className="absolute left-8 top-8 max-w-xs">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.label}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                >
-                  <p className="text-xs uppercase tracking-[0.28em] text-rose">Current drawer</p>
-                  <h3 className="mt-2 font-serif text-3xl text-ink">{current.label}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/65">{current.note}</p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.label}
-                className="skill-orbit"
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.04 }}
-              >
-                {current.items.map((item, i) => (
-                  <motion.div
-                    key={item.name}
-                    className={`skill-bubble skill-pos-${i + 1}`}
-                    animate={{ y: [0, i % 2 ? 9 : -9, 0], rotate: [0, i % 2 ? 2 : -2, 0] }}
-                    transition={{ duration: 4.8 + i * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                    whileHover={{ scale: 1.14, zIndex: 10 }}
-                  >
-                    <span className="skill-icon">
-                      {item.slug ? (
-                        <img src={`https://cdn.simpleicons.org/${item.slug}`} alt="" />
-                      ) : (
-                        <span>{item.monogram}</span>
-                      )}
-                    </span>
-                    <span className="font-serif text-sm">{item.name}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-            <div className="skill-center-mark">
-              <span>build</span>
-              <strong>+</strong>
-              <span>learn</span>
-            </div>
-            <Arrow className="absolute bottom-6 left-8 w-24 rotate-12 text-rose/45" />
-            <p className="absolute bottom-7 right-8 font-hand text-xl text-rose">
-              hover around — nothing sits still
-            </p>
-          </div>
+        <div className="skills-gallery mt-16">
+          {skills.map(([name, file], index) => (
+            <motion.div
+              key={name}
+              className="skill-logo-card"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: Math.min(index * 0.025, 0.35) }}
+              whileHover={{ y: -6, scale: 1.04 }}
+              tabIndex={0}
+              aria-label={name}
+            >
+              <img src={skillIcon(file)} alt="" />
+              <span>{name}</span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -1766,9 +1654,9 @@ function Contact() {
                 <div className="text-right font-hand text-xl text-ink/70">{time}</div>
                 <p className="mt-8 font-serif text-2xl italic">Dear visitor,</p>
                 <p className="mt-6 text-lg leading-relaxed text-ink/85 font-serif">
-                  I build software, AI/ML tools, and research-led products in simple English and
-                  with clear thinking. If you want to collaborate, ask a question, discuss an idea,
-                  or share an opportunity, I would love to hear from you.
+                  If you've made it this far, thank you.
+
+                  I enjoy conversations about software, AI, research, product building, and ambitious ideas. Whether it's a role, collaboration, startup idea, or simply a good discussion, I'd love to hear from you.
                 </p>
 
                 <div className="mt-10 grid sm:grid-cols-2 gap-6 text-sm">

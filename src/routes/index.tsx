@@ -31,17 +31,33 @@ const skillIcon = (fileName: string) => skillIconModules[`../assets/icons/${file
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Vidhi Bhutia | Software, AI/ML, Research, Product" },
+      { title: "Vidhi Bhutia | Software Engineer, AI/ML Researcher & Builder" },
       {
         name: "description",
         content:
-          "Vidhi Bhutia's portfolio: software development, AI/ML, research, product thinking, and practical projects built in simple English.",
+          "Explore Vidhi Bhutia's portfolio: software engineering, AI/ML projects (Federated Learning, Agentic AI, RAG), research publications, and product thinking. nit Rourkela and Morgan Stanley alumnus.",
       },
-      { property: "og:title", content: "Vidhi Bhutia | Software, AI/ML, Research, Product" },
+      {
+        name: "keywords",
+        content:
+          "Vidhi Bhutia, Software Engineer, Machine Learning, AI Researcher, AI/ML Developer, Product Manager, Product Thinking, Data Analyst, NIT Rourkela, VIT Vellore, Vellore Institute of Technology, Morgan Stanley, Python, TypeScript, React, Federated Learning, RAG, n8n Automation, portfolio",
+      },
+      { name: "author", content: "Vidhi Bhutia" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Vidhi Bhutia | Software Engineer, AI/ML Researcher & Builder" },
       {
         property: "og:description",
         content:
-          "A recruiter-friendly portfolio showing software work, AI/ML projects, research, and product thinking.",
+          "A comprehensive, recruiter-friendly developer portfolio presenting software work, AI/ML projects, database log research, and product planning.",
+      },
+      { property: "og:site_name", content: "Vidhi Bhutia Portfolio" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Vidhi Bhutia | Software Engineer, AI/ML Researcher & Builder" },
+      {
+        name: "twitter:description",
+        content:
+          "Developer portfolio highlighting software installations, arXiv agentic studies, federated medical learning, and ESG reporting dashboards.",
       },
     ],
     links: [
@@ -678,10 +694,10 @@ function Hero() {
         </div>
 
         {/* right collage */}
-        <div className="lg:col-span-5 relative h-[560px]">
-          <Tilt3D max={18} className="absolute top-0 right-4 lg:right-8 w-72">
-            <motion.div 
-              style={{ y: y1 }} 
+        <div className="lg:col-span-5 relative h-[420px] sm:h-[560px] w-full">
+          <Tilt3D max={18} className="absolute top-0 right-2 sm:right-4 lg:right-8 w-60 sm:w-72">
+            <motion.div
+              style={{ y: y1 }}
               className="polaroid rotate-[5deg]"
             >
               <div className="aspect-[4/5] relative overflow-hidden bg-paper">
@@ -694,35 +710,35 @@ function Hero() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-paper/8 via-transparent to-transparent pointer-events-none" />
               </div>
-              <div className="mt-3 font-hand text-xl text-ink/80 text-center min-h-[28px] select-none">
+              <div className="mt-3 font-hand text-lg sm:text-xl text-ink/80 text-center min-h-[24px] sm:min-h-[28px] select-none">
                 - the doodle version
               </div>
             </motion.div>
           </Tilt3D>
 
-          <Tilt3D max={16} className="absolute bottom-4 left-0 w-56">
+          <Tilt3D max={16} className="absolute bottom-2 sm:bottom-4 left-0 w-44 sm:w-56">
             <motion.div style={{ y: y2 }} className="polaroid rotate-[-9deg]">
               <div className="aspect-square ivory-texture relative overflow-hidden flex items-center justify-center">
-                <div className="text-center px-4">
-                  <div className="font-script text-burgundy text-3xl leading-tight">
+                <div className="text-center px-2 sm:px-4">
+                  <div className="font-script text-burgundy text-2xl sm:text-3xl leading-tight">
                     building
                     <br />
                     day by day.
                   </div>
                 </div>
               </div>
-              <div className="mt-3 font-hand text-xl text-ink/80 text-center">notes, 2026</div>
+              <div className="mt-3 font-hand text-lg sm:text-xl text-ink/80 text-center">notes, 2026</div>
             </motion.div>
           </Tilt3D>
 
-          <div className="tape w-28 h-7 top-[-6px] right-28 lg:right-32 rotate-[-12deg]" />
-          <div className="tape w-24 h-6 bottom-2 left-10 rotate-[14deg]" />
+          <div className="tape w-20 h-5 sm:w-28 sm:h-7 top-[-6px] right-20 sm:right-28 lg:right-32 rotate-[-12deg]" />
+          <div className="tape w-16 h-4 sm:w-24 sm:h-6 bottom-2 left-6 sm:left-10 rotate-[14deg]" />
 
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 1, type: "spring", stiffness: 120 }}
-            className="absolute bottom-2 right-[-8px] lg:right-[-16px] w-24 h-24 lg:w-28 lg:h-28"
+            className="absolute bottom-2 right-[-8px] lg:right-[-16px] w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28"
           >
             {/* Hand-drawn sketch circle around wax seal */}
             <div className="absolute -inset-3 text-gold/70 select-none pointer-events-none">
@@ -1473,7 +1489,7 @@ function ResearchLab() {
         {/* Link to view all projects on GitHub with hand-drawn annotations and doodles */}
         <div className="mt-28 border-t border-border/60 pt-20 flex flex-col items-center relative select-none">
           <ArrowConnector className="absolute -top-6 left-1/4 w-28 text-rose/30 -rotate-6 hidden md:block pointer-events-none" />
-          
+
           <Reveal>
             <div className="relative group text-center px-4">
               <HighlightStroke className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-80 text-gold/60 group-hover:text-burgundy/30 transition-colors pointer-events-none" />
@@ -1566,7 +1582,7 @@ function Playground() {
       const delta = time - lastTime;
       lastTime = time;
       // Orbit slows down or stops if any technology is hovered, rotating at a calm pace normally
-      const speed = hoveredSkill ? 0.0008 : 0.005; 
+      const speed = hoveredSkill ? 0.0008 : 0.005;
       setRotation(prev => (prev + speed * delta) % 360);
       frameId = requestAnimationFrame(update);
     };
@@ -1651,7 +1667,7 @@ function Playground() {
         </Reveal>
 
         {/* Outer container adjusting height dynamically to prevent vertical gaps when scaled */}
-        <div 
+        <div
           className="relative w-full flex items-center justify-center mt-12 overflow-visible"
           style={{ height: `${760 * scale}px` }}
         >
@@ -1678,7 +1694,7 @@ function Playground() {
             <div className="absolute rounded-full border border-dashed border-border/80 pointer-events-none" style={{ width: 630, height: 630, left: "65px", top: "65px" }} />
 
             {/* Center System Core (Skills) */}
-            <motion.div 
+            <motion.div
               className="absolute w-20 h-20 rounded-full bg-paper border-2 border-burgundy shadow-[0_6px_20px_-8px_rgba(66,25,36,0.4)] flex items-center justify-center text-center p-3 z-20"
               style={{ left: "340px", top: "340px" }}
               animate={{
@@ -1721,20 +1737,20 @@ function Playground() {
                     }}
                     transition={{ type: "spring", stiffness: 180, damping: 14 }}
                   >
-                    <div 
+                    <div
                       className="relative w-14 h-14 rounded-full bg-paper border border-border shadow-md flex items-center justify-center p-2.5 cursor-pointer group"
                       style={{ borderColor: isHovered ? "var(--burgundy)" : "var(--border)" }}
                     >
                       {isHovered && (
                         <CircleDoodle className="absolute -inset-2.5 w-[135%] h-[135%] text-gold animate-[spin_8s_linear_infinite] pointer-events-none" />
                       )}
-                      
+
                       <img
                         src={skillIcon(file)}
                         alt={name}
                         className="w-9 h-9 object-contain select-none pointer-events-none"
                       />
-                      
+
                       {/* Floating handwritten label */}
                       {isHovered && (
                         <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-hand text-[15px] leading-none text-wine font-medium whitespace-nowrap bg-paper border border-border px-2 py-1 rounded shadow-sm z-50">
@@ -2083,7 +2099,7 @@ function Footer() {
     <footer className="py-12 px-6 border-t border-border bg-wine-block text-wine-block-text/80">
       <div className="mx-auto max-w-6xl flex flex-wrap items-center justify-between gap-6 text-sm">
         <div className="font-serif italic">
-          © {new Date().getFullYear()} Vidhi Bhutia · Made by hand in Vellore.
+          © {new Date().getFullYear()} Vidhi Bhutia · Made with ❤️
         </div>
         <div className="flex items-center gap-5">
           <a

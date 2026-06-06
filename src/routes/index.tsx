@@ -650,9 +650,9 @@ function Hero() {
 
           <Reveal delay={0.3}>
             <p className="mt-10 max-w-xl text-lg leading-relaxed text-ink/80">
-              Engineer, researcher, and product thinker building software that turns complex
-              problems into systems people can actually use. I like turning messy ideas into clear
-              systems that are easy to use, easy to explain, and useful in real work.
+              Engineer, researcher, and product thinker building software that turns complex problems into systems people can actually use.
+
+              From enterprise monitoring platforms and AI agents to research systems and developer tools, I enjoy building technology that solves practical problems.
             </p>
           </Reveal>
 
@@ -738,27 +738,9 @@ function Hero() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 1, type: "spring", stiffness: 120 }}
-            className="absolute bottom-2 right-[-8px] lg:right-[-16px] w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28"
+            className="absolute bottom-2 right-[-8px] lg:right-[-16px] w-14 h-14 sm:w-18 sm:h-18 lg:w-22 lg:h-22"
           >
-            {/* Hand-drawn sketch circle around wax seal */}
-            <div className="absolute -inset-3 text-gold/70 select-none pointer-events-none">
-              <CircleDoodle className="w-full h-full" />
-            </div>
-
-            <motion.svg
-              viewBox="0 0 100 100"
-              className="absolute inset-0 w-full h-full text-burgundy"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <defs>
-                <path id="circ" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-              </defs>
-              <text fontSize="9" fill="currentColor" fontFamily="serif" letterSpacing="2">
-                <textPath href="#circ">VIDHI · BHUTIA · BUILDER · RESEARCHER · CREATOR · </textPath>
-              </text>
-            </motion.svg>
-            <div className="absolute inset-3 rounded-full wax-seal p-2.5">
+            <div className="absolute inset-0 rounded-full wax-seal p-2">
               <img
                 src={logoImage}
                 alt="Vidhi logo mark"
@@ -773,7 +755,7 @@ function Hero() {
 
           <div className="absolute top-1/3 -right-24 font-hand text-lg text-burgundy/60 rotate-[-12deg] hidden xl:block z-10">
             <Arrow className="absolute -left-10 top-5 w-8 text-rose/40 rotate-[135deg]" />
-            - student & developer
+            - engineer & product thinker
           </div>
 
           <motion.div
@@ -927,7 +909,7 @@ function Education() {
       year: "Jan → Apr 2026",
       title: "Project Management Fellowship",
       place: "NextLeap",
-      note: "An 8-week cohort fellowship focused on product thinking, user research, roadmaps, prioritization, mentorship, and interview practice.",
+      note: "A fellowship focused on product thinking, user research, roadmaps, projects, mentorship, and hand-ons practise with real-world examples.",
       icon: "📐",
       tilt: "2deg",
       featured: true,
@@ -1037,15 +1019,6 @@ function WorkJourney() {
       tilt: "1.5deg",
       doodle: "sequence-model comparison studies",
     },
-    {
-      year: "Feb - Mar 2024",
-      title: "HR Management Intern",
-      place: "Suvidha Foundation · Remote",
-      note: "Coordinated candidate communication, onboarding, databases and official support groups while reporting recruitment progress and resolving candidate queries.",
-      metric: "Candidate operations end to end",
-      tilt: "-1deg",
-      doodle: "onboarding operations",
-    },
   ];
 
   return (
@@ -1059,7 +1032,7 @@ function WorkJourney() {
             Working, <span className="italic text-burgundy">in the real world.</span>
           </h2>
           <p className="mt-6 max-w-xl text-ink/75">
-            Five internships across research, finance, sustainability, HR and product. One simple goal
+            Four internships across research, finance, sustainability, and product. One simple goal
             - make data useful.
           </p>
         </Reveal>
@@ -1877,8 +1850,8 @@ function WallOfWins() {
                       >
                         {/* Pushpin circle dot doodle */}
                         <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-burgundy/40 border border-burgundy/60" />
-                        <div className="font-hand text-3xl leading-tight text-wine">{w.text}</div>
-                        <div className="mt-3 text-sm text-wine/80">{w.sub}</div>
+                        <div className="font-hand text-3xl leading-tight text-wine-block">{w.text}</div>
+                        <div className="mt-3 text-sm text-wine-block/80">{w.sub}</div>
                       </div>
                     )}
                     {w.kind === "Stamp" && (
@@ -2024,40 +1997,42 @@ function Contact() {
                 <div className="tape w-32 h-7 -top-3 right-10 rotate-[3deg]" />
                 <p className="font-hand text-2xl text-gold">- direct message</p>
                 <h3 className="mt-2 font-serif text-3xl md:text-4xl">Send a note.</h3>
-                <p className="mt-4 text-paper/80 leading-relaxed font-serif">
-                  Wanna discuss something? Send me a message now you your contact details!
+                <p className="mt-4 text-white/80 leading-relaxed font-serif">
+                  Have an idea, opportunity, question, or just want to say hello?
+
+                  Drop me a message and I'll get back to you.
                 </p>
 
                 <div className="relative mt-8 grid gap-4">
                   <label className="grid gap-2 text-sm">
-                    <span className="uppercase tracking-[0.25em] text-paper/70">Name</span>
+                    <span className="uppercase tracking-[0.25em] text-white/70">Name</span>
                     <input
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       required
-                      className="rounded-2xl border border-paper/15 bg-paper/10 px-4 py-3 text-paper placeholder:text-paper/40 outline-none transition-colors focus:border-gold"
+                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 outline-none transition-colors focus:border-gold"
                       placeholder="Your name"
                     />
                   </label>
                   <label className="grid gap-2 text-sm">
-                    <span className="uppercase tracking-[0.25em] text-paper/70">Email</span>
+                    <span className="uppercase tracking-[0.25em] text-white/70">Email</span>
                     <input
                       type="email"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       required
-                      className="rounded-2xl border border-paper/15 bg-paper/10 px-4 py-3 text-paper placeholder:text-paper/40 outline-none transition-colors focus:border-gold"
+                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 outline-none transition-colors focus:border-gold"
                       placeholder="you@example.com"
                     />
                   </label>
                   <label className="grid gap-2 text-sm">
-                    <span className="uppercase tracking-[0.25em] text-paper/70">Message</span>
+                    <span className="uppercase tracking-[0.25em] text-white/70">Message</span>
                     <textarea
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       required
                       rows={6}
-                      className="rounded-2xl border border-paper/15 bg-paper/10 px-4 py-3 text-paper placeholder:text-paper/40 outline-none transition-colors focus:border-gold resize-none"
+                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 outline-none transition-colors focus:border-gold resize-none"
                       placeholder="What would you like to talk about?"
                     />
                   </label>
@@ -2067,18 +2042,18 @@ function Contact() {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-wine transition-transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-wine-block transition-transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {status === "sending" ? "Sending..." : "Send message"}
                   </button>
                   <a
                     href="mailto:vidhibhutia2407@gmail.com"
-                    className="inline-flex items-center gap-2 rounded-full border border-paper/20 px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-paper/10"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10"
                   >
                     Or email me
                   </a>
                 </div>
-                <div className="relative mt-4 min-h-6 text-sm text-paper/80">
+                <div className="relative mt-4 min-h-6 text-sm text-white/80">
                   {status === "done" && <p>Message sent successfully. Thank you for writing.</p>}
                   {status === "error" && (
                     <p>Message could not be sent right now. Please try again or use email.</p>

@@ -31,6 +31,8 @@
   --color-secondary-foreground: var(--ink);
   --color-destructive: oklch(0.55 0.2 25);
   --color-destructive-foreground: var(--paper);
+  --color-wine-block: var(--wine-block);
+  --color-wine-block-text: var(--wine-block-text);
 
   --font-serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -51,6 +53,9 @@
   --gold: #c7a46a;
   --ink: #2a1820;
 
+  --wine-block: #421924;
+  --wine-block-text: #f8f3ee;
+
   --background: #f8f3ee;
   --foreground: #2a1820;
   --card: #fbf7f2;
@@ -68,6 +73,9 @@
   --ivory: #221319;
   --gold: #e8c892;
   --ink: #f8f3ee;
+
+  --wine-block: #2a1118;
+  --wine-block-text: #f8f3ee;
 
   --background: #1a0f14;
   --foreground: #f8f3ee;

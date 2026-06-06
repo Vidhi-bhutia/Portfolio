@@ -12,6 +12,14 @@ import logoImage from "@/assets/vidhi-logo.png";
 import doodleImage from "@/assets/vidhi-doodle.png";
 import formalImage from "@/assets/formal pic.jpg";
 
+// Project Doodles
+import workforceDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_20 AM.png";
+import agenticDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_13 AM.png";
+import healthDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_06 AM.png";
+import remedyDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_32 AM.png";
+import jobAutomationDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_25 AM.png";
+import readmeDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_37 AM.png";
+
 const skillIconModules = import.meta.glob("../assets/icons/*.png", {
   eager: true,
   query: "?url",
@@ -63,8 +71,20 @@ const Arrow = ({ className = "" }: { className?: string }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M5 30 Q 30 5, 60 30 T 92 32" />
-    <path d="M82 22 L 94 32 L 84 42" />
+    <motion.path
+      d="M5 30 Q 30 5, 60 30 T 92 32"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    />
+    <motion.path
+      d="M82 22 L 94 32 L 84 42"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3, delay: 0.7, ease: "easeOut" }}
+    />
   </svg>
 );
 const Star = ({ className = "" }: { className?: string }) => (
@@ -86,7 +106,13 @@ const Squiggle = ({ className = "" }: { className?: string }) => (
     strokeWidth="2"
     strokeLinecap="round"
   >
-    <path d="M2 10 Q 12 0 22 10 T 42 10 T 62 10 T 82 10 T 102 10 T 122 10 T 142 10 T 162 10 T 182 10 T 198 10" />
+    <motion.path
+      d="M2 10 Q 12 0 22 10 T 42 10 T 62 10 T 82 10 T 102 10 T 122 10 T 142 10 T 162 10 T 182 10 T 198 10"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
+    />
   </svg>
 );
 const Bulb = ({ className = "" }: { className?: string }) => (
@@ -196,7 +222,13 @@ const CheckMark = ({ className = "" }: { className?: string }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M20 6L9 17l-5-5" />
+    <motion.path
+      d="M20 6L9 17l-5-5"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    />
   </svg>
 );
 
@@ -223,7 +255,13 @@ const CircleDoodle = ({ className = "" }: { className?: string }) => (
     strokeWidth="1.6"
     strokeLinecap="round"
   >
-    <path d="M50 10 C 20 12, 10 40, 15 65 C 20 90, 60 95, 80 80 C 95 65, 90 20, 52 12 C 45 10, 38 12, 35 15" />
+    <motion.path
+      d="M50 10 C 20 12, 10 40, 15 65 C 20 90, 60 95, 80 80 C 95 65, 90 20, 52 12 C 45 10, 38 12, 35 15"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+    />
   </svg>
 );
 
@@ -236,7 +274,13 @@ const HighlightStroke = ({ className = "" }: { className?: string }) => (
     strokeWidth="3"
     strokeLinecap="round"
   >
-    <path d="M5 5 C 30 2, 60 8, 95 4" />
+    <motion.path
+      d="M5 5 C 30 2, 60 8, 95 4"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+    />
   </svg>
 );
 
@@ -250,8 +294,20 @@ const ArrowConnector = ({ className = "" }: { className?: string }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M5 35 Q 25 15, 50 20 T 92 10" />
-    <path d="M82 18 L 94 10 L 86 2" />
+    <motion.path
+      d="M5 35 Q 25 15, 50 20 T 92 10"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    />
+    <motion.path
+      d="M82 18 L 94 10 L 86 2"
+      initial={{ pathLength: 0 }}
+      whileInView={{ pathLength: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3, delay: 0.7, ease: "easeOut" }}
+    />
   </svg>
 );
 
@@ -525,7 +581,7 @@ function Nav({ dark, toggleTheme }: { dark: boolean; toggleTheme: () => void }) 
             rel="noreferrer"
             className="hidden sm:inline-flex items-center gap-2 text-sm rounded-full border border-burgundy text-burgundy px-4 py-1.5 hover:bg-burgundy hover:text-paper transition-colors"
           >
-            ↓ Résumé
+            ↓ Resume
           </a>
           <a
             href="#contact"
@@ -623,7 +679,7 @@ function Hero() {
 
         {/* right collage */}
         <div className="lg:col-span-5 relative h-[560px]">
-          <Tilt3D max={18} className="absolute top-0 right-0 w-72">
+          <Tilt3D max={18} className="absolute top-0 right-4 lg:right-8 w-72">
             <motion.div 
               style={{ y: y1 }} 
               className="polaroid rotate-[5deg]"
@@ -659,14 +715,14 @@ function Hero() {
             </motion.div>
           </Tilt3D>
 
-          <div className="tape w-28 h-7 top-[-6px] right-24 rotate-[-12deg]" />
+          <div className="tape w-28 h-7 top-[-6px] right-28 lg:right-32 rotate-[-12deg]" />
           <div className="tape w-24 h-6 bottom-2 left-10 rotate-[14deg]" />
 
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 1, type: "spring", stiffness: 120 }}
-            className="absolute bottom-28 right-2 w-28 h-28"
+            className="absolute bottom-2 right-[-8px] lg:right-[-16px] w-24 h-24 lg:w-28 lg:h-28"
           >
             {/* Hand-drawn sketch circle around wax seal */}
             <div className="absolute -inset-3 text-gold/70 select-none pointer-events-none">
@@ -700,6 +756,7 @@ function Hero() {
           <Arrow className="absolute top-32 -left-8 w-20 text-rose/50 -rotate-12 hidden lg:block" />
 
           <div className="absolute top-1/3 -right-24 font-hand text-lg text-burgundy/60 rotate-[-12deg] hidden xl:block z-10">
+            <Arrow className="absolute -left-10 top-5 w-8 text-rose/40 rotate-[135deg]" />
             - student & developer
           </div>
 
@@ -768,9 +825,12 @@ function Approach() {
             <Reveal key={step.no} delay={i * 0.1}>
               <motion.article
                 whileHover={{ y: -8, rotate: i === 1 ? 0 : i ? 1 : -1 }}
-                className="approach-card"
+                className="approach-card group cursor-pointer"
               >
-                <span className="font-script text-4xl text-gold">{step.no}</span>
+                <div className="relative inline-block">
+                  <span className="font-script text-4xl text-gold relative z-10">{step.no}</span>
+                  <CircleDoodle className="absolute -inset-2.5 w-14 h-14 text-rose/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </div>
                 <p className="mt-8 text-xs uppercase tracking-[0.28em] text-rose">{step.label}</p>
                 <h3 className="mt-3 font-serif text-2xl">{step.title}</h3>
                 <p className="mt-4 leading-relaxed text-ink/70">{step.note}</p>
@@ -801,7 +861,7 @@ function Marquee() {
     "✦",
   ];
   return (
-    <section className="border-y border-border/60 bg-wine text-paper py-6 overflow-hidden">
+    <section className="border-y border-border/60 bg-wine-block text-wine-block-text py-6 overflow-hidden">
       <motion.div
         className="flex gap-12 whitespace-nowrap font-serif text-3xl md:text-4xl italic"
         animate={{ x: ["0%", "-50%"] }}
@@ -983,7 +1043,7 @@ function WorkJourney() {
             Working, <span className="italic text-burgundy">in the real world.</span>
           </h2>
           <p className="mt-6 max-w-xl text-ink/75">
-            Four internships across research, finance, sustainability, and product. One simple goal
+            Five internships across research, finance, sustainability, HR and product. One simple goal
             - make data useful.
           </p>
         </Reveal>
@@ -1000,7 +1060,13 @@ function WorkJourney() {
             strokeWidth="1.5"
             strokeDasharray="6 6"
           >
-            <path d="M10 0 Q 0 250 10 500 T 10 1000" />
+            <motion.path
+              d="M10 0 Q 0 250 10 500 T 10 1000"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.8, ease: "easeInOut" }}
+            />
           </svg>
 
           <div className="space-y-16">
@@ -1195,10 +1261,6 @@ function SelectedWork() {
 
 /* ====================== RESEARCH LAB ====================== */
 function ResearchLab() {
-  const [archiveOpen, setArchiveOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTag, setSelectedTag] = useState("All");
-
   const featuredProjects = [
     {
       title: "Workforce Monitoring Platform",
@@ -1212,6 +1274,7 @@ function ResearchLab() {
       code: null,
       live: null,
       doodle: "activity tracker",
+      image: workforceDoodle,
     },
     {
       title: "Agentic AI Researcher",
@@ -1225,6 +1288,7 @@ function ResearchLab() {
       code: "https://github.com/Vidhi-bhutia/Agentic-AI-Researcher",
       live: null,
       doodle: "autonomous draft",
+      image: agenticDoodle,
     },
     {
       title: "Health Analysis using Federated Learning",
@@ -1238,6 +1302,7 @@ function ResearchLab() {
       code: "https://github.com/Vidhi-bhutia/Health-Analysis-using-Federated-Learning-and-Cloud",
       live: null,
       doodle: "federated ML nodes",
+      image: healthDoodle,
     },
     {
       title: "Remedy Relay",
@@ -1251,6 +1316,7 @@ function ResearchLab() {
       code: "https://github.com/Vidhi-bhutia/Remedy-Relay",
       live: null,
       doodle: "vector index",
+      image: remedyDoodle,
     },
     {
       title: "N8N Job Search Automation",
@@ -1264,6 +1330,7 @@ function ResearchLab() {
       code: "https://github.com/Vidhi-bhutia/N8N-Job-Search-Automation",
       live: null,
       doodle: "pipeline workflow",
+      image: jobAutomationDoodle,
     },
     {
       title: "README Live Preview",
@@ -1278,154 +1345,9 @@ function ResearchLab() {
       install:
         "https://marketplace.visualstudio.com/items?itemName=VidhiBhutia.readme-live-preview&ssr=false#overview",
       doodle: "113+ installs!",
+      image: readmeDoodle,
     },
   ];
-
-  const archiveProjects = [
-    {
-      tag: "Dev Tool",
-      title: "Code Change Impact Analyzer",
-      stack: "Python · Static Analysis · CLI",
-      lines: [
-        "Parses Python imports, function definitions, and calls to build dependency graphs.",
-        "Predicts which modules and tests may be affected when a file changes.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Project-Dependency-Detector",
-    },
-    {
-      tag: "Reliability",
-      title: "Service Health Checker",
-      stack: "Python · Monitoring",
-      lines: [
-        "Runs TCP, HTTP, and disk-space checks for production readiness and deployments.",
-        "Provides library and CLI output with automation-friendly exit codes and no dependencies.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Service-Health-Checker",
-    },
-    {
-      tag: "Product",
-      title: "Skillyn",
-      stack: "Streamlit · Gemini · PyPDF2",
-      lines: [
-        "Analyzes a PDF resume against a pasted job description for ATS alignment.",
-        "Returns a match percentage, missing keywords, profile summary, and actionable feedback.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Skillyn",
-    },
-    {
-      tag: "ML",
-      title: "Job Recommendation System",
-      stack: "Flask · Gemini · BeautifulSoup",
-      lines: [
-        "Scrapes live LinkedIn and Workday listings with custom filtering instead of a paid data API.",
-        "Compares a PDF resume with each role and explains fit scores and improvement advice.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Job-Recommendation-System",
-    },
-    {
-      tag: "Simulation",
-      title: "Neuromorphic Routing Simulator",
-      stack: "Python · FastAPI · AsyncIO",
-      lines: [
-        "Compares traditional routing with a decentralized winner-takes-all simulation.",
-        "Reinforces faster services over time and visualizes latency, throughput, and reliability.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Neuromorphic-Routing-Simulator",
-    },
-    {
-      tag: "AI Docs",
-      title: "Documentation AI",
-      stack: "React · TypeScript · Gemini · PlantUML",
-      lines: [
-        "Analyzes an uploaded codebase ZIP and drafts architecture and module documentation.",
-        "Generates multiple UML diagram types and exports the finished notebook as a PDF.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Documentation-AI",
-    },
-    {
-      tag: "Crypto",
-      title: "Stateful Hash Based Signature Scheme",
-      stack: "Python · Streamlit · Cryptography",
-      lines: [
-        "Research prototype for hashing, signing, verifying, and storing long-lived document metadata.",
-        "Attempts XMSS, LMS, or SPHINCS integrations and clearly labels its Ed25519 demo fallback as non-quantum-safe.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Stateful-Hash-Based-Signature-Scheme",
-    },
-    {
-      tag: "ML",
-      title: "Diabetes Prediction",
-      stack: "Machine Learning",
-      lines: [
-        "A diabetes-prediction repository whose current README contains only the project title.",
-        "Kept in the archive without additional claims until its model and interface are documented.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Diabetes-Prediction",
-    },
-    {
-      tag: "Algorithms",
-      title: "Optimized A-star",
-      stack: "C++ · A* · Haversine",
-      lines: [
-        "Finds a route between cities using A* and geographic distance as the heuristic.",
-        "Adjusts route cost for traffic levels and excludes roads marked as closed.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Optimized-A-star",
-    },
-    {
-      tag: "ML",
-      title: "Disease Prediction Model",
-      stack: "Machine Learning",
-      lines: [
-        "README describes a general prediction framework with preprocessing and multiple model families.",
-        "Documents evaluation through accuracy, precision, recall, and F1 without claiming a specific deployed disease model.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Disease-Prediction-Model",
-    },
-    {
-      tag: "Data Science",
-      title: "Climate Change Predictions",
-      stack: "Streamlit · scikit-learn · Visualization",
-      lines: [
-        "Compares Random Forest, Gradient Boosting, and neural networks for temperature prediction.",
-        "Explores model error with MSE, RMSE, MAE, MAPE, residual, distribution, and Q-Q views.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Climate-Change-Predictions",
-    },
-    {
-      tag: "Finance ML",
-      title: "Stock Price Predictor",
-      stack: "LSTM · GRU · TCN · Yahoo Finance",
-      lines: [
-        "Compares three sequence-model architectures for forecasting stock prices from historical data.",
-        "Uses Yahoo Finance data as the shared input for LSTM, GRU, and TCN experiments.",
-      ],
-      code: "https://github.com/Vidhi-bhutia/Stock_Price_Predictor",
-    },
-  ];
-
-  const tags = [
-    "All",
-    "Dev Tool",
-    "Reliability",
-    "Research",
-    "Automation",
-    "ML",
-    "Simulation",
-    "AI Docs",
-    "Algorithms",
-    "Data Science",
-    "Finance ML",
-  ];
-
-  const filteredArchive = archiveProjects.filter((p) => {
-    const matchesSearch =
-      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.stack.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.lines.some((l) => l.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesTag = selectedTag === "All" || p.tag === selectedTag;
-    return matchesSearch && matchesTag;
-  });
 
   return (
     <section
@@ -1465,12 +1387,12 @@ function ResearchLab() {
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           {featuredProjects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.1}>
-              <Tilt3D max={6} className="h-full">
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 150, damping: 15 }}
-                  className="group relative h-full bg-paper border border-border/80 rounded-sm p-8 md:p-10 shadow-[0_25px_60px_-25px_rgba(66,25,36,0.3)] flex flex-col justify-between"
-                  style={{ rotate: i % 2 === 0 ? "-0.8deg" : "0.8deg" }}
+              <div
+                style={{ transform: `rotate(${i % 2 === 0 ? "-0.8deg" : "0.8deg"})` }}
+                className="h-full"
+              >
+                <div
+                  className="group relative h-full bg-paper border border-border/80 rounded-sm p-8 md:p-10 shadow-[0_15px_45px_-18px_rgba(66,25,36,0.25)] hover:shadow-[0_25px_60px_-25px_rgba(66,25,36,0.35)] hover:border-burgundy/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
                 >
                   <PaperClip className="absolute top-4 left-6 w-8 h-8 text-rose/40 -rotate-12 group-hover:rotate-0 transition-transform" />
 
@@ -1479,6 +1401,17 @@ function ResearchLab() {
                   </div>
 
                   <div>
+                    {/* Project Doodle Diagram Image */}
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-ivory border border-border/60 rounded mt-4 mb-6 group-hover:border-burgundy/30 transition-all duration-300">
+                      <div className="tape w-20 h-5 -top-2.5 left-1/2 -translate-x-1/2 rotate-[-2deg] opacity-80 z-10" />
+                      <img
+                        src={p.image}
+                        alt={`${p.title} diagram sketch`}
+                        className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+
                     <div className="mt-4">
                       <h3 className="font-serif text-2xl md:text-3xl leading-tight text-ink relative inline-block group-hover:text-burgundy transition-colors">
                         {p.title}
@@ -1531,140 +1464,34 @@ function ResearchLab() {
                       </span>
                     )}
                   </div>
-                </motion.div>
-              </Tilt3D>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
 
-        {/* PROJECT ARCHIVE filing cabinet drawer */}
-        <div className="mt-28 border-t border-border/80 pt-20">
-          <div className="flex flex-col items-center">
-            <Reveal>
-              <div className="relative">
-                <motion.button
-                  onClick={() => setArchiveOpen(!archiveOpen)}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="relative flex flex-col items-center bg-paper border-2 border-burgundy rounded px-12 py-5 shadow-[0_12px_28px_-8px_rgba(66,25,36,0.3)] cursor-pointer select-none group"
-                >
-                  <div className="w-24 h-4 rounded-full border-2 border-burgundy/60 bg-ivory shadow-inner flex items-center justify-center mb-2">
-                    <div className="w-20 h-1.5 bg-burgundy/20 rounded-full" />
-                  </div>
-                  <span className="font-serif text-lg font-medium text-burgundy uppercase tracking-widest group-hover:text-wine">
-                    {archiveOpen ? "Close Project Drawer" : "View Archive (11+ Projects)"}
-                  </span>
-                  <div className="font-hand text-sm text-rose/70 mt-1 italic">
-                    {archiveOpen ? "Click to close filing cabinet" : "Click to slide drawer open"}
-                  </div>
-
-                  <div className="absolute -top-6 -right-12 bg-gold text-wine font-hand text-xs rounded px-2.5 py-1 rotate-[8deg] shadow-sm pointer-events-none group-hover:rotate-[15deg] transition-transform">
-                    experiments inside!
-                  </div>
-                </motion.button>
-              </div>
-            </Reveal>
-
-            <AnimatePresence>
-              {archiveOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full overflow-hidden mt-12 bg-ivory/50 border border-border/80 rounded-sm p-6 md:p-10 shadow-[inset_0_4px_16px_rgba(0,0,0,0.05)]"
-                >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border/60 pb-8">
-                    <div>
-                      <h4 className="font-serif text-2xl text-ink">The Research Catalog</h4>
-                      <p className="font-hand text-lg text-rose mt-1">
-                        Scribbles, utilities, and older data models
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-3">
-                      <select
-                        value={selectedTag}
-                        onChange={(e) => setSelectedTag(e.target.value)}
-                        className="bg-paper border border-border rounded-full px-4 py-2 text-xs font-serif text-ink focus:outline-none focus:border-burgundy"
-                      >
-                        {tags.map((t) => (
-                          <option key={t} value={t}>
-                            {t}
-                          </option>
-                        ))}
-                      </select>
-
-                      <input
-                        type="text"
-                        placeholder="Search files..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="bg-paper border border-border rounded-full px-4 py-2 text-xs font-serif text-ink placeholder:text-ink/40 focus:outline-none focus:border-burgundy"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <AnimatePresence mode="popLayout">
-                      {filteredArchive.map((n, i) => (
-                        <motion.div
-                          key={n.title}
-                          layout
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.3 }}
-                          whileHover={{ y: -4, rotate: i % 2 === 0 ? "-1deg" : "1deg" }}
-                          className="relative bg-paper border border-border rounded-sm p-6 shadow-sm min-h-[220px] flex flex-col justify-between group"
-                        >
-                          <div className="tape w-16 h-4.5 -top-2 left-6 rotate-[-4deg] opacity-75" />
-                          <div className="absolute top-4 right-4 text-[9px] uppercase tracking-widest text-rose bg-rose/5 px-2 py-0.5 rounded">
-                            {n.tag}
-                          </div>
-
-                          <div className="mt-4">
-                            <h3 className="font-serif text-xl mt-2 group-hover:text-burgundy transition-colors">
-                              {n.title}
-                            </h3>
-                            <p className="mt-1 text-[11px] uppercase tracking-wider text-rose">
-                              {n.stack}
-                            </p>
-                            <ul className="mt-4 space-y-2 font-hand text-base text-ink/80">
-                              {n.lines.map((line, idx) => (
-                                <li key={idx} className="flex gap-2">
-                                  <span className="text-gold">›</span>
-                                  <span>{line}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          <div className="mt-6 border-t border-border/30 pt-4 flex items-center justify-between">
-                            <a
-                              href={n.code}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="text-xs text-burgundy hover:text-wine font-serif italic inline-flex items-center gap-1"
-                            >
-                              Open file ↗
-                            </a>
-                            <CheckMark className="w-3.5 h-3.5 text-gold/40" />
-                          </div>
-                        </motion.div>
-                      ))}
-                    </AnimatePresence>
-
-                    {filteredArchive.length === 0 && (
-                      <div className="col-span-full py-16 text-center font-hand text-2xl text-rose/80">
-                        No documents found matching the query.
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+        {/* Link to view all projects on GitHub with hand-drawn annotations and doodles */}
+        <div className="mt-28 border-t border-border/60 pt-20 flex flex-col items-center relative select-none">
+          <ArrowConnector className="absolute -top-6 left-1/4 w-28 text-rose/30 -rotate-6 hidden md:block pointer-events-none" />
+          
+          <Reveal>
+            <div className="relative group text-center px-4">
+              <HighlightStroke className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-80 text-gold/60 group-hover:text-burgundy/30 transition-colors pointer-events-none" />
+              <motion.a
+                href="https://github.com/Vidhi-bhutia?tab=repositories"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2.5 font-serif text-2xl md:text-3xl italic text-burgundy hover:text-wine transition-colors"
+              >
+                View full repository catalog on GitHub ↗
+              </motion.a>
+              {/* <div className="font-hand text-lg text-rose/80 mt-4 italic">
+                ~ 11+ additional scripts, repositories & older models
+              </div> */}
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -1680,7 +1507,7 @@ function Impact() {
     ["113", "Extension installs"],
   ];
   return (
-    <section className="relative py-28 px-6 bg-wine text-paper overflow-hidden">
+    <section className="relative py-28 px-6 bg-wine-block text-wine-block-text overflow-hidden">
       <div className="absolute inset-0 grain opacity-40" />
       <div className="mx-auto max-w-6xl relative">
         <Reveal>
@@ -1851,12 +1678,19 @@ function Playground() {
             <div className="absolute rounded-full border border-dashed border-border/80 pointer-events-none" style={{ width: 630, height: 630, left: "65px", top: "65px" }} />
 
             {/* Center System Core (Skills) */}
-            <div className="absolute w-20 h-20 rounded-full bg-paper border-2 border-burgundy shadow-[0_6px_20px_-8px_rgba(66,25,36,0.4)] flex items-center justify-center text-center p-3 z-20" style={{ left: "340px", top: "340px" }}>
+            <motion.div 
+              className="absolute w-20 h-20 rounded-full bg-paper border-2 border-burgundy shadow-[0_6px_20px_-8px_rgba(66,25,36,0.4)] flex items-center justify-center text-center p-3 z-20"
+              style={{ left: "340px", top: "340px" }}
+              animate={{
+                scale: hoveredSkill ? 0.92 : 1,
+              }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            >
               <CircleDoodle className="absolute inset-0 w-full h-full text-rose/30 pointer-events-none" />
               <span className="font-serif text-sm font-semibold tracking-widest text-burgundy relative z-10">
                 SKILLS
               </span>
-            </div>
+            </motion.div>
 
             {/* Direct Skills Orbiting Nodes */}
             {orbits.map((orbit) => {
@@ -1995,54 +1829,57 @@ function WallOfWins() {
             * internship metrics!
           </div>
 
-          {wins.map((w, i) => (
-            <Reveal key={i} delay={i * 0.05}>
-              <Tilt3D max={14}>
-                <motion.div
-                  whileHover={{ rotate: 0, scale: 1.04 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 14 }}
-                  style={{ transform: `rotate(${w.rot})` }}
-                  className="relative"
-                >
-                  {w.kind === "Polaroid" && (
-                    <div className="polaroid relative">
-                      {/* Paperclip overlay on Polaroids */}
-                      {i % 2 === 0 && (
-                        <PaperClip className="absolute top-2 right-2 w-6 h-6 text-rose/40 rotate-[15deg] z-25 pointer-events-none" />
-                      )}
+          {wins.map((w, i) => {
+            const baseRot = parseFloat(w.rot);
+            return (
+              <Reveal key={i} delay={i * 0.05}>
+                <Tilt3D max={14}>
+                  <motion.div
+                    whileHover={{ rotate: 0, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
+                    style={{ rotate: baseRot }}
+                    className="relative"
+                  >
+                    {w.kind === "Polaroid" && (
+                      <div className="polaroid relative">
+                        {/* Paperclip overlay on Polaroids */}
+                        {i % 2 === 0 && (
+                          <PaperClip className="absolute top-2 right-2 w-6 h-6 text-rose/40 rotate-[15deg] z-25 pointer-events-none" />
+                        )}
+                        <div
+                          className={`aspect-square ${w.color} relative overflow-hidden flex items-center justify-center text-paper p-4 text-center`}
+                        >
+                          <div className="absolute inset-0 grain opacity-40" />
+                          <div className="relative font-serif text-xl leading-snug">{w.text}</div>
+                        </div>
+                        <div className="mt-3 font-hand text-lg text-ink/80 text-center">{w.sub}</div>
+                      </div>
+                    )}
+                    {w.kind === "Sticky" && (
                       <div
-                        className={`aspect-square ${w.color} relative overflow-hidden flex items-center justify-center text-paper p-4 text-center`}
+                        className={`${w.color} aspect-square p-5 shadow-[0_15px_30px_-10px_rgba(66,25,36,0.4)] flex flex-col justify-center relative`}
                       >
-                        <div className="absolute inset-0 grain opacity-40" />
-                        <div className="relative font-serif text-xl leading-snug">{w.text}</div>
+                        {/* Pushpin circle dot doodle */}
+                        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-burgundy/40 border border-burgundy/60" />
+                        <div className="font-hand text-3xl leading-tight text-wine">{w.text}</div>
+                        <div className="mt-3 text-sm text-wine/80">{w.sub}</div>
                       </div>
-                      <div className="mt-3 font-hand text-lg text-ink/80 text-center">{w.sub}</div>
-                    </div>
-                  )}
-                  {w.kind === "Sticky" && (
-                    <div
-                      className={`${w.color} aspect-square p-5 shadow-[0_15px_30px_-10px_rgba(66,25,36,0.4)] flex flex-col justify-center relative`}
-                    >
-                      {/* Pushpin circle dot doodle */}
-                      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-burgundy/40 border border-burgundy/60" />
-                      <div className="font-hand text-3xl leading-tight text-wine">{w.text}</div>
-                      <div className="mt-3 text-sm text-wine/80">{w.sub}</div>
-                    </div>
-                  )}
-                  {w.kind === "Stamp" && (
-                    <div className="bg-paper border-2 border-burgundy aspect-square flex flex-col items-center justify-center p-4 text-center relative">
-                      <div className="text-[10px] uppercase tracking-[0.3em] text-burgundy">
-                        Approved
+                    )}
+                    {w.kind === "Stamp" && (
+                      <div className="bg-paper border-2 border-burgundy aspect-square flex flex-col items-center justify-center p-4 text-center relative">
+                        <div className="text-[10px] uppercase tracking-[0.3em] text-burgundy">
+                          Approved
+                        </div>
+                        <div className="mt-3 font-serif text-xl text-burgundy">{w.text}</div>
+                        <div className="mt-2 font-hand text-lg text-ink/70">{w.sub}</div>
+                        <div className="mt-3 w-12 h-12 rounded-full wax-seal" />
                       </div>
-                      <div className="mt-3 font-serif text-xl text-burgundy">{w.text}</div>
-                      <div className="mt-2 font-hand text-lg text-ink/70">{w.sub}</div>
-                      <div className="mt-3 w-12 h-12 rounded-full wax-seal" />
-                    </div>
-                  )}
-                </motion.div>
-              </Tilt3D>
-            </Reveal>
-          ))}
+                    )}
+                  </motion.div>
+                </Tilt3D>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -2140,7 +1977,7 @@ function Contact() {
                     Email me →
                   </MagneticButton>
                   <MagneticButton href={RESUME} target="_blank" rel="noreferrer" variant="outline">
-                    Open résumé
+                    Open resume
                   </MagneticButton>
                 </div>
 
@@ -2165,15 +2002,14 @@ function Contact() {
             <Tilt3D max={6}>
               <form
                 onSubmit={sendMessage}
-                className="relative bg-wine text-paper p-10 md:p-14 shadow-[0_30px_70px_-20px_rgba(66,25,36,0.45)] overflow-hidden h-full"
+                className="relative bg-wine-block text-wine-block-text p-10 md:p-14 shadow-[0_30px_70px_-20px_rgba(66,25,36,0.45)] overflow-hidden h-full"
               >
                 <div className="absolute inset-0 grain opacity-20" />
                 <div className="tape w-32 h-7 -top-3 right-10 rotate-[3deg]" />
                 <p className="font-hand text-2xl text-gold">- direct message</p>
                 <h3 className="mt-2 font-serif text-3xl md:text-4xl">Send a note.</h3>
                 <p className="mt-4 text-paper/80 leading-relaxed font-serif">
-                  Tell me your name, email, and message. This sends directly without opening any
-                  mail app.
+                  Wanna discuss something? Send me a message now you your contact details!
                 </p>
 
                 <div className="relative mt-8 grid gap-4">
@@ -2244,7 +2080,7 @@ function Contact() {
 /* ====================== FOOTER ====================== */
 function Footer() {
   return (
-    <footer className="py-12 px-6 border-t border-border bg-wine text-paper/80">
+    <footer className="py-12 px-6 border-t border-border bg-wine-block text-wine-block-text/80">
       <div className="mx-auto max-w-6xl flex flex-wrap items-center justify-between gap-6 text-sm">
         <div className="font-serif italic">
           © {new Date().getFullYear()} Vidhi Bhutia · Made by hand in Vellore.
@@ -2275,7 +2111,7 @@ function Footer() {
             rel="noreferrer"
             className="hover:text-gold transition-colors"
           >
-            Résumé ↓
+            Resume ↓
           </a>
         </div>
       </div>

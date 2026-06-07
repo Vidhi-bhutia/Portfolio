@@ -13,12 +13,12 @@ import doodleImage from "@/assets/vidhi-doodle.png";
 import formalImage from "@/assets/formal pic.jpg";
 
 // Project Doodles
-import workforceDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_20 AM.png";
-import agenticDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_13 AM.png";
-import healthDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_06 AM.png";
-import remedyDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_32 AM.png";
-import jobAutomationDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_25 AM.png";
-import readmeDoodle from "@/assets/projects-doodle/ChatGPT Image Jun 7, 2026, 01_37_37 AM.png";
+import workforceDoodle from "@/assets/projects-doodle/atsms-doodle.png";
+import agenticDoodle from "@/assets/projects-doodle/agent-doodle.png";
+import healthDoodle from "@/assets/projects-doodle/FL-doodle.png";
+import remedyDoodle from "@/assets/projects-doodle/remedy-doodle.png";
+import jobAutomationDoodle from "@/assets/projects-doodle/n8n-doodle.png";
+import readmeDoodle from "@/assets/projects-doodle/readme-doodle.png";
 
 const skillIconModules = import.meta.glob("../assets/icons/*.png", {
   eager: true,

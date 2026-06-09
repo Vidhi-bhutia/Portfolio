@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   motion,
   useScroll,
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-const RESUME = "https://drive.google.com/file/d/1BJBxvoqT7zoj_8WRUJvrPRMN5FvsaXXN/view";
+const RESUME = "https://drive.google.com/file/d/1ZIYv6z1J-_hovRdzFFtDcutBm5SK6TPM/view?usp=sharing";
 const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/vidhibhutia2407@gmail.com";
 
 /* ====================== DOODLES ====================== */
@@ -663,7 +663,7 @@ function Hero() {
                 "NextLeap PM Fellow",
                 "NIT Rourkela Research",
                 "LinkedIn Top Voice",
-                "9.04 CGPA",
+                "9.11 CGPA",
               ].map((proof, i) => (
                 <motion.span
                   key={proof}
@@ -681,7 +681,7 @@ function Hero() {
               {[
                 ["Based in", "Pune, IN"],
                 ["Degree", "CSE & Business Systems"],
-                ["CGPA", "9.04 / 10"],
+                ["CGPA", "9.11 / 10"],
                 ["Focus", "AI · Build · Research"],
               ].map(([k, v]) => (
                 <div key={k}>
@@ -900,10 +900,10 @@ function Education() {
       year: "2022 → Present",
       title: "B.Tech · CSE & Business Systems",
       place: "Vellore Institute of Technology",
-      note: "CGPA 9.04 - where engineering met business and research.",
+      note: "CGPA 9.11 - where engineering met business and research.",
       icon: "🎓",
       tilt: "-1deg",
-      doodle: "9.04 CGPA 🚀",
+      doodle: "9.11 CGPA 🚀",
     },
     {
       year: "Jan → Apr 2026",
@@ -1490,7 +1490,7 @@ function ResearchLab() {
 /* ====================== IMPACT ====================== */
 function Impact() {
   const stats = [
-    ["9.04", "CGPA at VIT"],
+    ["9.11", "CGPA at VIT"],
     ["50k+", "Daily logs read"],
     ["20+", "Projects Built"],
     ["113", "Extension installs"],
@@ -1747,7 +1747,7 @@ function WallOfWins() {
   const wins = [
     {
       kind: "Polaroid",
-      text: "9.04 CGPA",
+      text: "9.11 CGPA",
       sub: "VIT, ongoing",
       rot: "-4deg",
       color: "bg-burgundy",

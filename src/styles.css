@@ -157,6 +157,60 @@ body {
     filter: drop-shadow(0 12px 24px rgba(66, 25, 36, 0.18));
   }
 
+  .torn-paper-chip,
+  .impact-receipt {
+    clip-path: polygon(
+      0 5%,
+      7% 2%,
+      15% 6%,
+      25% 1%,
+      35% 5%,
+      48% 2%,
+      58% 6%,
+      72% 3%,
+      84% 7%,
+      100% 4%,
+      98% 92%,
+      90% 96%,
+      78% 93%,
+      66% 98%,
+      54% 94%,
+      43% 99%,
+      31% 95%,
+      18% 98%,
+      8% 93%,
+      1% 96%
+    );
+  }
+
+  .impact-receipt {
+    background:
+      linear-gradient(color-mix(in srgb, var(--rose) 13%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--rose) 8%, transparent) 1px, transparent 1px),
+      color-mix(in srgb, var(--paper) 10%, var(--wine-block));
+    background-size:
+      100% 31px,
+      28px 100%,
+      auto;
+    border: 1px solid color-mix(in srgb, var(--wine-block-text) 20%, transparent);
+    box-shadow:
+      0 24px 50px -34px rgba(0, 0, 0, 0.72),
+      inset 0 1px 0 color-mix(in srgb, var(--wine-block-text) 10%, transparent);
+  }
+
+  .impact-receipt::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 22%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 14%),
+      radial-gradient(circle at 80% 78%, color-mix(in srgb, var(--rose) 18%, transparent), transparent 18%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.2'/></svg>");
+    mix-blend-mode: soft-light;
+    opacity: 0.7;
+  }
+
   .polaroid {
     background: var(--card);
     color: var(--ink);

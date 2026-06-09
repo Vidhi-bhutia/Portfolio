@@ -1490,28 +1490,45 @@ function ResearchLab() {
 /* ====================== IMPACT ====================== */
 function Impact() {
   const stats = [
-    ["9.11", "CGPA at VIT"],
-    ["50k+", "Daily logs read"],
-    ["20+", "Projects Built"],
-    ["113", "Extension installs"],
+    ["9.11", "CGPA at VIT", "margin note: steady"],
+    ["50k+", "Daily logs read", "tiny logs, loud signal"],
+    ["20+", "Projects Built", "built, shipped, learned"],
+    ["113", "Extension installs", "real users clicked"],
   ];
   return (
     <section className="relative py-28 px-6 bg-wine-block text-wine-block-text overflow-hidden">
       <div className="absolute inset-0 grain opacity-40" />
+      <div className="absolute left-[7%] top-14 h-24 w-24 rotate-[-12deg] rounded-full border border-gold/35 opacity-70 hidden md:block" />
+      <Squiggle className="absolute right-[10%] top-24 w-40 text-rose/40 rotate-3 hidden md:block" />
+      <ArrowConnector className="absolute left-[12%] bottom-20 w-36 text-gold/35 rotate-12 hidden lg:block" />
+      <Flower className="absolute right-[6%] bottom-16 w-16 text-paper/25 hidden md:block" />
+      <div className="absolute right-[19%] top-40 h-16 w-12 -rotate-6 torn-paper-chip bg-paper/10 hidden lg:block" />
       <div className="mx-auto max-w-6xl relative">
         <Reveal>
-          <p className="font-hand text-2xl text-gold">- the receipts</p>
-          <h2 className="mt-2 font-serif text-5xl md:text-7xl leading-[0.95]">
+          <div className="relative inline-block">
+            <p className="font-hand text-2xl text-gold">- the receipts</p>
+            <CircleDoodle className="absolute -left-7 -top-5 w-24 text-gold/30 -rotate-12 pointer-events-none" />
+          </div>
+          <h2 className="relative mt-2 font-serif text-5xl md:text-7xl leading-[0.95]">
             Small numbers, <span className="italic">honest weight.</span>
+            <HighlightStroke className="absolute -bottom-5 left-0 w-72 text-gold/45 pointer-events-none" />
           </h2>
         </Reveal>
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-10">
-          {stats.map(([n, l], i) => (
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7">
+          {stats.map(([n, l, note], i) => (
             <Reveal key={l} delay={i * 0.08}>
               <Tilt3D max={12}>
-                <motion.div whileHover={{ y: -6 }} className="border-t border-paper/30 pt-5">
+                <motion.div
+                  whileHover={{ y: -6, rotate: i % 2 ? 1.5 : -1.5 }}
+                  className="impact-receipt relative min-h-52 px-5 py-6"
+                >
+                  <div className="absolute -top-3 left-8 h-6 w-16 rotate-[-7deg] bg-gold/25 border border-gold/25" />
+                  <Sparkle className="absolute right-5 top-5 w-4 text-gold/70" />
                   <div className="font-serif text-6xl md:text-7xl text-gold">{n}</div>
-                  <div className="mt-3 text-paper/80 text-sm uppercase tracking-widest">{l}</div>
+                  <div className="mt-4 text-wine-block-text/90 text-sm uppercase tracking-widest">{l}</div>
+                  <div className="mt-5 inline-flex rotate-[-2deg] border border-current/30 px-3 py-1 font-hand text-xl text-gold/95">
+                    {note}
+                  </div>
                 </motion.div>
               </Tilt3D>
             </Reveal>

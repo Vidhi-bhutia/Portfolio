@@ -68,7 +68,7 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-const RESUME = "https://drive.google.com/file/d/1ZIYv6z1J-_hovRdzFFtDcutBm5SK6TPM/view?usp=sharing";
+const RESUME = "https://drive.google.com/file/d/1kRumLJeFxgoU1XpfF1x2k2X7sKauHLMD/view";
 const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/vidhibhutia2407@gmail.com";
 
 /* ====================== DOODLES ====================== */
@@ -679,7 +679,7 @@ function Hero() {
           <Reveal delay={0.7}>
             <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 text-sm">
               {[
-                ["Based in", "Pune, IN"],
+                ["Based in", "Katni, IN"],
                 ["Degree", "CSE & Business Systems"],
                 ["CGPA", "9.11 / 10"],
                 ["Focus", "AI · Build · Research"],
@@ -897,7 +897,7 @@ function Education() {
       doodle: "boarding school focus",
     },
     {
-      year: "2022 → Present",
+      year: "2022 → 2026",
       title: "B.Tech · CSE & Business Systems",
       place: "Vellore Institute of Technology",
       note: "CGPA 9.11 - where engineering met business and research.",
@@ -909,7 +909,7 @@ function Education() {
       year: "Jan → Apr 2026",
       title: "Project Management Fellowship",
       place: "NextLeap",
-      note: "A fellowship focused on product thinking, user research, roadmaps, projects, mentorship, and hand-ons practise with real-world examples.",
+      note: "A fellowship focused on product thinking, user research, roadmaps, projects, mentorship, and hand-ons practise with real-world examples. I was also awarded as a 'Top Fellow'",
       icon: "📐",
       tilt: "2deg",
       featured: true,
@@ -984,7 +984,7 @@ function Education() {
 function WorkJourney() {
   const stops = [
     {
-      year: "Feb 2026 - Present",
+      year: "Feb 2026 - July 2026",
       title: "IT & Software Intern",
       place: "People Prudent · Pune",
       note: "Designing an enterprise workforce platform with real-time activity, browser and application analytics, configurable 5-second to 24-hour capture, live screen monitoring, automated reports, device validation, and RBAC across 4+ roles.",
@@ -1328,12 +1328,12 @@ function ResearchLab() {
       lines: [
         "Live Markdown compiler side-panel matching GitHub's official CSS theme.",
         "Supports dynamic rendering of tables, checklists, local images, and syntax highlighting.",
-        "Downloaded by 113+ developers worldwide with live auto-refresh on save.",
+        "Downloaded by 170+ developers worldwide with live auto-refresh on save.",
       ],
       code: "https://github.com/Vidhi-bhutia/Github-Readme-Viewer",
       install:
         "https://marketplace.visualstudio.com/items?itemName=VidhiBhutia.readme-live-preview&ssr=false#overview",
-      doodle: "113+ installs!",
+      doodle: "170+ installs!",
       image: readmeDoodle,
     },
   ];
@@ -1493,7 +1493,7 @@ function Impact() {
     ["9.11", "CGPA at VIT", "margin note: steady"],
     ["50k+", "Daily logs read", "tiny logs, loud signal"],
     ["20+", "Projects Built", "built, shipped, learned"],
-    ["113", "Extension installs", "real users clicked"],
+    ["170+", "Extension installs", "real users clicked"],
   ];
   return (
     <section className="relative py-28 px-6 bg-wine-block text-wine-block-text overflow-hidden">
@@ -1786,7 +1786,7 @@ function WallOfWins() {
     },
     {
       kind: "Sticky",
-      text: "113 extension installs",
+      text: "170+ extension installs",
       sub: "README Live Preview",
       rot: "-3deg",
       color: "bg-rose/70",
@@ -1794,7 +1794,7 @@ function WallOfWins() {
     { kind: "Stamp", text: "PyPI Author", sub: "Code Change Impact Analyzer", rot: "2deg" },
     {
       kind: "Polaroid",
-      text: "NextLeap PM Fellow",
+      text: "NextLeap Top PM Fellow",
       sub: "Jan → Apr 2026",
       rot: "-6deg",
       color: "bg-burgundy",
